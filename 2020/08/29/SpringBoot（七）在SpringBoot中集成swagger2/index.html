@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ifknow">
   <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
-  <title>SpringBoot（六）如何在SpringBoot启动时看到自己的logo？ - ifknow | 分享技术,享受生活</title>
+  <title>SpringBoot（七）在SpringBoot中集成swagger2 - ifknow | 分享技术,享受生活</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-29 17:48" pubdate>
-      星期六, 八月 29日 2020, 5:48 下午
+    <time datetime="2020-08-29 17:51" pubdate>
+      星期六, 八月 29日 2020, 5:51 下午
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      651 字
+      1.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      19
        分钟
     </span>
   
@@ -233,111 +233,232 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">SpringBoot（六）如何在SpringBoot启动时看到自己的logo？</h1>
+            <h1 style="display: none">SpringBoot（七）在SpringBoot中集成swagger2</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：星期六, 八月 29日 2020, 5:50 下午
+                  本文最后更新于：星期六, 八月 29日 2020, 5:54 下午
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h1><blockquote>
-<p>在启动 Spring Boot 项目时，默认看到 Spring Boot 启动 Logo。有些小伙伴可能就会想能不能自己定制一个专属的 Logo 呢？答案是肯定可以的。其实SpringBoot是支持自定义logo的，下面就介绍一下如何自定义logo吧！</p>
-</blockquote>
-<div class="hljs"><pre><code class="hljs xml">  .   ____          _            __ _ _
- /\\ / ___&#x27;_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | &#x27;_ | &#x27;_| | &#x27;_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  &#x27;  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.3.3.RELEASE)</code></pre></div>
+              <p>前后端分离项目，使用swagger接口调试工具，方便又快捷！</p>
+<a id="more"></a>
 
-<h1 id="2-实现步骤"><a href="#2-实现步骤" class="headerlink" title="2 实现步骤"></a>2 实现步骤</h1><h2 id="2-1-SpringBoot支持文本内容和图像输出"><a href="#2-1-SpringBoot支持文本内容和图像输出" class="headerlink" title="2.1 SpringBoot支持文本内容和图像输出"></a>2.1 SpringBoot支持文本内容和图像输出</h2><ul>
-<li>文本：文本图像会直接输出</li>
-<li>图像：支持gif、jpg或者png，SpringBoot会将图像转换为ASCll字符，然后再输出</li>
-</ul>
-<p>一般在使用中我们都会使用txt文本内容作为banner输出。</p>
-<p>这里分享两个自定义logo的网站：</p>
+<h3 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h3><blockquote>
+<p>作者现在是一名 Java 后台开发工程师，在公司负责后台业务代码的实现。公司是前后端开发的模式，这就要求后台人员写接口，前端人员调用。<br>所以这就需要一款接口文档能够实时的将后端写的接口展示给前端开发人员看。<br>目前我所了解的有两种：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="http://patorjk.com/software/taag/#p=display&amp;f=3D-ASCII">http://patorjk.com/software/taag/#p=display&amp;f=3D-ASCII</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.network-science.de/ascii/">http://www.network-science.de/ascii/</a></li>
+<li>Swagger</li>
+<li>Knife4j：knife4j是为Java MVC框架集成Swagger生成Api文档的增强解决方案,前身是swagger-bootstrap-ui,取名knife4j是希望她能像一把匕首一样小巧,轻量,并且功能强悍!</li>
 </ul>
-<h2 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2 配置"></a>2.2 配置</h2><p>在SpringBoot项目的<code>src/main/resources</code>目录下新建一个 File 命名为 banner.txt或者banner.gif。<br>然后再 banner.txt 中粘贴上在上面网站中自定义的 Logo。</p>
-<p>除此之外，还可以对logo进行设置字体大小，颜色，SpringBoot版本号等。</p>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>${application.version}</td>
-<td>MANIFEST.MF 中定义的版本。如：1.0</td>
-</tr>
-<tr>
-<td>${application.formatted-version}</td>
-<td>MANIFEST.MF<code>中定义的版本，并添加一个</code>v<code> 前缀。如：</code>v1.0</td>
-</tr>
-<tr>
-<td>${spring-boot.version}</td>
-<td>Spring Boot 版本。如：<code>2.1.1.RELEASE</code>.</td>
-</tr>
-<tr>
-<td>${spring-boot.formatted-version}</td>
-<td>Spring Boot 版本，并添加一个 <code>v</code> 前缀。如：<code>v2.1.1.RELEASE</code></td>
-</tr>
-<tr>
-<td><code>$&#123;Ansi.NAME&#125;</code> (or <code>$&#123;AnsiColor.NAME&#125;</code>, <code>$&#123;AnsiBackground.NAME&#125;</code>, <code>$&#123;AnsiStyle.NAME&#125;</code>)</td>
-<td>ANSI 颜色、字体。更多细节，参考：<a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-boot/tree/v2.1.1.RELEASE/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/ansi/AnsiPropertySource.java"><code>AnsiPropertySource</code></a>。</td>
-</tr>
-<tr>
-<td>${application.title}</td>
-<td><code>MANIFEST.MF</code> 中定义的应用名。</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>注：${} 设置字体颜色的变量之间不能换行或空格分隔，否则会导致除最后一个变量外，都不生效。</p>
+<p>二者都能实现相同的功能。</p>
 </blockquote>
-<p>同时也可以在application.yml中对banner进行配置</p>
-<div class="hljs"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span>
-  <span class="hljs-attr">main:</span>
-    <span class="hljs-comment"># banner-mode有三种模式：console-打印在控制台，log-以日志输出，off-关闭</span>
-    <span class="hljs-attr">banner-mode:</span> <span class="hljs-string">console</span>
-  <span class="hljs-attr">banner:</span>
-    <span class="hljs-comment"># 指定文本banner字符编码</span>
-    <span class="hljs-attr">charset:</span> <span class="hljs-string">utf-8</span>
-    <span class="hljs-comment"># 指定文本banner路径</span>
-    <span class="hljs-attr">location:</span> <span class="hljs-string">classpath:banner.txt</span>
-    <span class="hljs-attr">image:</span>
-      <span class="hljs-comment"># 指定图像banner路径</span>
-      <span class="hljs-attr">location:</span> <span class="hljs-string">banner.gif</span>
-      <span class="hljs-comment"># 指定图像banner宽度</span>
-      <span class="hljs-attr">width:</span> <span class="hljs-number">76</span>
-      <span class="hljs-comment"># 指定图像banner高度</span>
-      <span class="hljs-attr">height:</span>
-      <span class="hljs-comment"># 指定图像banner距离左边界字符数</span>
-      <span class="hljs-attr">margin:</span> <span class="hljs-number">2</span>
-      <span class="hljs-comment"># 指定图像banner是否转换为黑色控制台主题</span>
-      <span class="hljs-attr">invert:</span> <span class="hljs-literal">false</span></code></pre></div>
+<h3 id="1-Swagger"><a href="#1-Swagger" class="headerlink" title="1 Swagger"></a>1 Swagger</h3><h4 id="1-1-添加依赖"><a href="#1-1-添加依赖" class="headerlink" title="1.1 添加依赖"></a>1.1 添加依赖</h4><p>使用之前首先在pom.xml文件中新增Swagger所需要的依赖</p>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.xiaoymin<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>swagger-bootstrap-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.9.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
 
-<p>banner.txt内容：</p>
-<div class="hljs"><pre><code class="hljs tex"> ___  ________ ___  __    ________   ________  ___       __
-|<span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> _____<span class="hljs-tag">\<span class="hljs-name">\</span></span>  <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>|<span class="hljs-tag">\<span class="hljs-name"> </span></span>  ___  <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span>  __  <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>    |<span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
-<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>_/<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">/</span></span>  /|<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>   <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
- <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span>  __<span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>  ___  <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> __<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
-  <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>| <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name">_</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
-   <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span>  <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>______<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>___________<span class="hljs-tag">\</span>
-    <span class="hljs-tag">\<span class="hljs-name">|</span></span>__|<span class="hljs-tag">\<span class="hljs-name">|</span></span>__|    <span class="hljs-tag">\<span class="hljs-name">|</span></span>__| <span class="hljs-tag">\<span class="hljs-name">|</span></span>__|<span class="hljs-tag">\<span class="hljs-name">|</span></span>__| <span class="hljs-tag">\<span class="hljs-name">|</span></span>__|<span class="hljs-tag">\<span class="hljs-name">|</span></span>_______|<span class="hljs-tag">\<span class="hljs-name">|</span></span>____________|
+<p>默认创建的SpringBoot项目默认有<code>spring-boot-starter</code>，除此之外还需要引入web模块的依赖<code>spring-boot-starter-web</code>。</p>
+<h4 id="1-2-添加配置"><a href="#1-2-添加配置" class="headerlink" title="1.2 添加配置"></a>1.2 添加配置</h4><ul>
+<li>首先在application.yml中添加下面代码</li>
+</ul>
+<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">swagger2:</span>
+  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span></code></pre></div>
 
-:: Spring Boot ::             (v<span class="hljs-formula">$&#123;spring-boot.version&#125;)</span>
-<span class="hljs-formula">:: Spring Boot Tutorial ::    (v1.0.0)</span></code></pre></div>
+<ul>
+<li>编写Swagger 配置类</li>
+</ul>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.config;
 
-<p>启动应用后，控制台将打印如下 logo：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200820095647273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzczNjgx,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ifknow/spring-boot-examples/tree/master/spring-boot-banner">示例代码-GitHub</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/ifknow/spring-boot-examples/tree/master/spring-boot-banner">示例代码-Gitee</a></p>
+<span class="hljs-keyword">import</span> com.ifknow.annotation.Api_Base;
+<span class="hljs-keyword">import</span> com.ifknow.annotation.Api_Business;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Value;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="hljs-keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;
+<span class="hljs-keyword">import</span> springfox.documentation.builders.PathSelectors;
+<span class="hljs-keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;
+<span class="hljs-keyword">import</span> springfox.documentation.service.ApiInfo;
+<span class="hljs-keyword">import</span> springfox.documentation.service.Contact;
+<span class="hljs-keyword">import</span> springfox.documentation.spi.DocumentationType;
+<span class="hljs-keyword">import</span> springfox.documentation.spring.web.plugins.Docket;
+<span class="hljs-keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:19 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: Swagger2 配置类</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@EnableSwagger2</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Swagger2Config</span> </span>&#123;
+
+    <span class="hljs-meta">@Value(&quot;$&#123;swagger2.enable&#125;&quot;)</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> enable;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 配置swagger2核心配置docket &lt;/br&gt;</span>
+<span class="hljs-comment">     * swagger访问路径：http://localhost:8081/swagger-ui.html &lt;/br&gt;</span>
+<span class="hljs-comment">     * swagger业务接口api</span>
+<span class="hljs-comment">     *</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Docket <span class="hljs-title">restApiBusiness</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Docket(DocumentationType.SWAGGER_2)
+                .groupName(<span class="hljs-string">&quot;业务分组接口&quot;</span>)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api_Business.class))
+                .paths(PathSelectors.any())
+                .build()
+                .enable(enable);
+    &#125;
+
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Docket <span class="hljs-title">restApiBase</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Docket(DocumentationType.SWAGGER_2)
+                .groupName(<span class="hljs-string">&quot;基础接口&quot;</span>)
+                .apiInfo(apiInfoBase())
+                .select()
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api_Base.class))
+                .paths(PathSelectors.any())
+                .build()
+                .enable(enable);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> ApiInfo <span class="hljs-title">apiInfo</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ApiInfoBuilder()
+                .title(<span class="hljs-string">&quot;业务分组接口&quot;</span>)
+                .contact(<span class="hljs-keyword">new</span> Contact(<span class="hljs-string">&quot;ifknow&quot;</span>, <span class="hljs-string">&quot;http://www.gongshiyong.online&quot;</span>, <span class="hljs-string">&quot;shiyongjava@163.com&quot;</span>))
+                .description(<span class="hljs-string">&quot;ifknow测试Swagger&quot;</span>)
+                .version(<span class="hljs-string">&quot;1.0.0&quot;</span>)
+                .termsOfServiceUrl(<span class="hljs-string">&quot;http://www,gongshiyong.online&quot;</span>)
+                .build();
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> ApiInfo <span class="hljs-title">apiInfoBase</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ApiInfoBuilder()
+                .title(<span class="hljs-string">&quot;基础接口&quot;</span>)
+                .contact(<span class="hljs-keyword">new</span> Contact(<span class="hljs-string">&quot;ifknow&quot;</span>, <span class="hljs-string">&quot;http://www.gongshiyong.online&quot;</span>, <span class="hljs-string">&quot;shiyongjava@163.com&quot;</span>))
+                .description(<span class="hljs-string">&quot;ifknow测试Swagger&quot;</span>)
+                .version(<span class="hljs-string">&quot;1.0.0&quot;</span>)
+                .termsOfServiceUrl(<span class="hljs-string">&quot;http://www,gongshiyong.online&quot;</span>)
+                .build();
+    &#125;
+&#125;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.annotation;
+
+<span class="hljs-keyword">import</span> java.lang.annotation.ElementType;
+<span class="hljs-keyword">import</span> java.lang.annotation.Retention;
+<span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;
+<span class="hljs-keyword">import</span> java.lang.annotation.Target;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:34 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: NO Description</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Target(ElementType.TYPE)</span>
+<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Api_Business &#123;
+&#125;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.annotation;
+
+<span class="hljs-keyword">import</span> java.lang.annotation.ElementType;
+<span class="hljs-keyword">import</span> java.lang.annotation.Retention;
+<span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;
+<span class="hljs-keyword">import</span> java.lang.annotation.Target;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:50 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: NO Description</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Target(ElementType.TYPE)</span>
+<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Api_Base &#123;
+&#125;</code></pre></div>
+
+<h4 id="1-3-编写代码测试"><a href="#1-3-编写代码测试" class="headerlink" title="1.3 编写代码测试"></a>1.3 编写代码测试</h4><div class="hljs"><pre><code class="hljs java">![QQ截图<span class="hljs-number">20200820144932</span>](C:\Users\hainei-developer\Pictures\Saved Pictures\blog\<span class="hljs-number">8.17</span>-springboot\QQ截图<span class="hljs-number">20200820144932.</span>png)<span class="hljs-keyword">package</span> com.ifknow.controller;
+
+<span class="hljs-keyword">import</span> com.ifknow.annotation.Api_Business;
+<span class="hljs-keyword">import</span> io.swagger.annotations.Api;
+<span class="hljs-keyword">import</span> io.swagger.annotations.ApiOperation;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.*;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:37 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: 用户信息Controller</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Api(value = &quot;用户管理 - 用户信息管理api&quot;, tags = &quot;用户管理 - 用户信息管理api&quot;)</span>
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RequestMapping(&quot;/user&quot;)</span>
+<span class="hljs-meta">@Api_Business</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;
+
+    <span class="hljs-meta">@ApiOperation(value = &quot;新增用户信息&quot;, notes = &quot;新增用户信息&quot;)</span>
+    <span class="hljs-meta">@PostMapping(&quot;/insert&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">insert</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
+    &#125;
+
+    <span class="hljs-meta">@ApiOperation(value = &quot;删除用户信息&quot;, notes = &quot;删除用户信息&quot;)</span>
+    <span class="hljs-meta">@DeleteMapping(&quot;/delete&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">delete</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam</span> String id)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
+    &#125;
+
+    <span class="hljs-meta">@ApiOperation(value = &quot;修改用户信息&quot;, notes = &quot;修改用户信息&quot;)</span>
+    <span class="hljs-meta">@PutMapping(&quot;/update&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
+    &#125;
+
+    <span class="hljs-meta">@ApiOperation(value = &quot;查询用户信息&quot;, notes = &quot;查询用户信息&quot;)</span>
+    <span class="hljs-meta">@GetMapping(&quot;/pageInfo&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">pageInfo</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
+    &#125;
+&#125;</code></pre></div>
+
+<ul>
+<li>打开浏览器访问 <a target="_blank" rel="noopener" href="http://localhost:8081/swagger-ui.html">http://localhost:8081/swagger-ui.html</a> ，就可以看见 在controller中定义的方法，参数，返回值等。</li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ndWxpbWFsbC1nc3kub3NzLWNuLWhhbmd6aG91LmFsaXl1bmNzLmNvbS9vbmVibG9nLzIwMjAwODIwMTUwNDEwNjg0LnBuZw?x-oss-process=image/format,png" srcset="/img/loading.gif"></p>
+<h3 id="2-Knife4j"><a href="#2-Knife4j" class="headerlink" title="2 Knife4j"></a>2 Knife4j</h3><h4 id="2-1-添加依赖"><a href="#2-1-添加依赖" class="headerlink" title="2.1 添加依赖"></a>2.1 添加依赖</h4><blockquote>
+<p>Knife4j 的前身就是swagger。在swagger添加的依赖基础上，新增knife4j自己的依赖。</p>
+</blockquote>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--整合Knife4j--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.xiaoymin<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--在引用时请在maven中央仓库搜索最新版本号--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>knife4j-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
+
+<ul>
+<li>打开浏览器访问：<a target="_blank" rel="noopener" href="http://localhost:8081/doc.html">http://localhost:8081/doc.html</a> 。</li>
+</ul>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ndWxpbWFsbC1nc3kub3NzLWNuLWhhbmd6aG91LmFsaXl1bmNzLmNvbS9vbmVibG9nLzIwMjAwODIwMTUwNDA3MDUyLnBuZw?x-oss-process=image/format,png" srcset="/img/loading.gif"></p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h3><p>这两种接口展示我感觉来说，没有什么大的区别，用着合适就可以。</p>
+<p><a href="(https://github.com/ifknow/spring-boot-examples/tree/master/spring-boot-swagger">示例代码-GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/ifknow/spring-boot-examples/tree/master/spring-boot-swagger">示例代码-Gitee</a></p>
 
             </div>
             <hr>
@@ -349,6 +470,8 @@
                     
                       <a class="hover-with-bg" href="/categories/SpringBoot/">SpringBoot</a>
                     
+                      <a class="hover-with-bg" href="/categories/Swagger/">Swagger</a>
+                    
                   </div>
                 
                 
@@ -356,6 +479,10 @@
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/SpringBoot/">SpringBoot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Swagger/">Swagger</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Knife4j/">Knife4j</a>
                     
                   </div>
                 
@@ -368,18 +495,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/29/SpringBoot%EF%BC%88%E4%B8%83%EF%BC%89%E5%9C%A8SpringBoot%E4%B8%AD%E9%9B%86%E6%88%90swagger2/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SpringBoot（七）在SpringBoot中集成swagger2</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/29/SpringBoot%EF%BC%88%E4%BA%94%EF%BC%89Mybatis%E5%A6%82%E4%BD%95%E5%9C%A8SpringBoot%E4%B8%AD%E7%81%B5%E6%B4%BB%E4%BD%BF%E7%94%A8/">
-                        <span class="hidden-mobile">SpringBoot（五）Mybatis如何在SpringBoot中灵活使用</span>
+                      <a href="/2020/08/29/SpringBoot%EF%BC%88%E5%85%AD%EF%BC%89%E5%A6%82%E4%BD%95%E5%9C%A8SpringBoot%E5%90%AF%E5%8A%A8%E6%97%B6%E7%9C%8B%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84logo%EF%BC%9F/">
+                        <span class="hidden-mobile">SpringBoot（六）如何在SpringBoot启动时看到自己的logo？</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -674,7 +795,7 @@
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/2020/08/29/SpringBoot%EF%BC%88%E5%85%AD%EF%BC%89%E5%A6%82%E4%BD%95%E5%9C%A8SpringBoot%E5%90%AF%E5%8A%A8%E6%97%B6%E7%9C%8B%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84logo%EF%BC%9F/');
+          var target = decodeURI('/2020/08/29/SpringBoot%EF%BC%88%E4%B8%83%EF%BC%89%E5%9C%A8SpringBoot%E4%B8%AD%E9%9B%86%E6%88%90swagger2/');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -768,7 +889,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "SpringBoot（六）如何在SpringBoot启动时看到自己的logo？&nbsp;",
+        "SpringBoot（七）在SpringBoot中集成swagger2&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
