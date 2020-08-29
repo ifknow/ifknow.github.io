@@ -16,7 +16,7 @@
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
   <meta name="author" content="ifknow">
-  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb">
+  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
   <title>SpringBoot（二）Redis的使用 - ifknow | 个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -161,7 +161,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/wallroom-1920x1200-bg-3c54b96.jpg') no-repeat center center;
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/wallroom-1920x1200-bg-3c54b96.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：几秒前
+                  本文最后更新于：星期五, 八月 28日 2020, 11:23 晚上
                 
               </p>
             
@@ -253,17 +253,17 @@
 <li>redis数据库就是一款<strong>缓存数据库</strong>，用于存储使用频繁的数据，这样<strong>减少访问数据库的次数</strong>，提高运行效率。</li>
 <li>从存取速度来说，内存的读取速度官网数据是10W左右，如果对性能有更高的要求，可以对redis进行集群操作。</li>
 </ul>
-<h1 id="2-Redis的使用"><a href="#2-Redis的使用" class="headerlink" title="2.Redis的使用"></a>2.Redis的使用</h1><h2 id="2-1、引入SpringBoot提供的Redis依赖"><a href="#2-1、引入SpringBoot提供的Redis依赖" class="headerlink" title="2.1、引入SpringBoot提供的Redis依赖"></a>2.1、引入SpringBoot提供的Redis依赖</h2><pre><code class="hljs XML"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+<h1 id="2-Redis的使用"><a href="#2-Redis的使用" class="headerlink" title="2.Redis的使用"></a>2.Redis的使用</h1><h2 id="2-1、引入SpringBoot提供的Redis依赖"><a href="#2-1、引入SpringBoot提供的Redis依赖" class="headerlink" title="2.1、引入SpringBoot提供的Redis依赖"></a>2.1、引入SpringBoot提供的Redis依赖</h2><div class="hljs"><pre><code class="hljs XML"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.commons<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-pool2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
 
 <h2 id="2-2、添加配置文件"><a href="#2-2、添加配置文件" class="headerlink" title="2.2、添加配置文件"></a>2.2、添加配置文件</h2><p>在<strong>application.yml</strong> 文件中添加如下配置：</p>
-<pre><code class="hljs java">spring:
+<div class="hljs"><pre><code class="hljs java">spring:
   redis:
     # redis 服务器地址
     host: localhost
@@ -284,9 +284,9 @@
     # redis数据库连接超时时间
     timeout: PT10S
     # redis数据库索引，默认为0
-    database: <span class="hljs-number">2</span></code></pre>
+    database: <span class="hljs-number">2</span></code></pre></div>
 
-<h2 id="2-3、添加Redis配置类"><a href="#2-3、添加Redis配置类" class="headerlink" title="2.3、添加Redis配置类"></a>2.3、添加Redis配置类</h2><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span>
+<h2 id="2-3、添加Redis配置类"><a href="#2-3、添加Redis配置类" class="headerlink" title="2.3、添加Redis配置类"></a>2.3、添加Redis配置类</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedisConfig</span> </span>&#123;
     <span class="hljs-meta">@Bean</span>
     <span class="hljs-function"><span class="hljs-keyword">public</span> RedisTemplate&lt;String,Object&gt; <span class="hljs-title">redisTemplate</span><span class="hljs-params">(RedisConnectionFactory redisConnectionFactory)</span></span>&#123;
@@ -300,9 +300,9 @@
         redisTemplate.setValueSerializer(myStringRedisSerializer);
         <span class="hljs-keyword">return</span> redisTemplate;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyStringRedisSerializer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RedisSerializer</span>&lt;<span class="hljs-title">Object</span>&gt; </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyStringRedisSerializer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RedisSerializer</span>&lt;<span class="hljs-title">Object</span>&gt; </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Charset charset;
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyStringRedisSerializer</span><span class="hljs-params">()</span> </span>&#123;
@@ -331,22 +331,22 @@
             <span class="hljs-keyword">return</span> string.getBytes(charset);
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h2 id="2-4、使用"><a href="#2-4、使用" class="headerlink" title="2.4、使用"></a>2.4、使用</h2><p><strong>首先自动注入RedisTemplate，</strong>Spring对于Redis的方法都封装在RedisTemplate中。</p>
-<pre><code class="hljs java"><span class="hljs-meta">@Autowired</span>
-<span class="hljs-keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate;</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span>
+<span class="hljs-keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate;</code></pre></div>
 
-<pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testRedisInsertObject</span><span class="hljs-params">()</span> </span>&#123;
     User user = <span class="hljs-keyword">new</span> User(UUID.randomUUID().toString(), <span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-number">18</span>);
     redisTemplate.opsForValue().set(user.getId(), user);
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p> <strong>可以看到数据已新增到redis中：</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20200818104523995.png" srcset="/img/loading.gif" alt="img"></p>
 <p>这样写的话可能每次使用有需要创建一个RedisTemplate，我们可以将redisTemplate中的方法封装成一个工具类。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.gsy.service;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.gsy.service;
 
 <span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
 <span class="hljs-keyword">import</span> org.springframework.data.redis.core.RedisTemplate;
@@ -1193,11 +1193,11 @@
         &#125;
         <span class="hljs-keyword">return</span> redisTemplate.opsForZSet().reverseRangeByScore(key, min, max);
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p>感兴趣的话可以对每个方法进行测试！</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ifknow/spring-boot-examples/tree/master/spring-boot-redis">示例代码-GitHub</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.gongshiyong.online/">示例代码-Gitee</a></p>
+<p><a href="http://www.gongshiyong.online/">示例代码-Gitee</a></p>
 
             </div>
             <hr>
@@ -1249,14 +1249,14 @@
       addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
       addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
         var gitalk = new Gitalk({
-          clientID: 'ecd7bc7d1ce755c62e23',
-          clientSecret: '935a27429e4e8984031cda200fc1212e71739e41',
-          repo: 'ifknow.github.io',
+          clientID: 'c3051c1e9cd6cc171825',
+          clientSecret: 'd7dca2311bd8ace87d703ff317b97b51c656d1e9',
+          repo: 'blog-comments',
           owner: 'ifknow',
           admin: ["ifknow"],
           id: md5(location.pathname),
           language: 'zh-CN',
-          labels: ["讲文明，树新风！文明发言！"],
+          labels: ["Gitalk"],
           perPage: 20,
           pagerDirection: 'last',
           createIssueManually: true,
@@ -1600,7 +1600,7 @@
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
+        collapseDepth: 6,
         scrollSmooth: true,
         headingsOffset: -boardTop
       });
@@ -1635,10 +1635,10 @@
   <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
-      placement: "right",
+      placement: "left",
       visible: "hover",
       
-      icon: "❡"
+      icon: "§"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -1743,17 +1743,6 @@
 
 
 
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?94f2b86da7c6d203c9f7e1ceea0fa13c";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
   
 
   

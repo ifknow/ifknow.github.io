@@ -16,7 +16,7 @@
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
   <meta name="author" content="ifknow">
-  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb">
+  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
   <title>SpringBoot（一）入门篇-你还不知道Spring Boot？ - ifknow | 个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -161,7 +161,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/wallroom-1920x1200-bg-3c54b96.jpg') no-repeat center center;
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/wallroom-1920x1200-bg-3c54b96.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 分钟前
+                  本文最后更新于：星期五, 八月 28日 2020, 11:16 晚上
                 
               </p>
             
@@ -290,13 +290,13 @@
 <p>上面只是搭建了一个java框架，并没有引入web功能模块。</p>
 </blockquote>
 <p>1、引入web模块的第一步，添加web模块的依赖：</p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
 
 <p>pom.xml文件中默认有两个依赖：</p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
@@ -310,7 +310,7 @@
                 <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit-vintage-engine<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
 
 <ul>
 <li>spring-boot-starter：springboot核心starter，其中包括自动配置、yaml等等</li>
@@ -324,23 +324,23 @@
 <p>在controller包下面的UserController里面编写。</p>
 <p>@RestController 这个注解的作用就是将我们返回的数据都已json格式返回。</p>
 </blockquote>
-<pre><code class="hljs java"><span class="hljs-meta">@RestController</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;
     <span class="hljs-meta">@RequestMapping(&quot;/hello&quot;)</span>
     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">hello</span><span class="hljs-params">()</span></span>&#123;
         <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world&quot;</span>;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p>3、启动主程序，在浏览器地址栏输入 <a target="_blank" rel="noopener" href="http://localhost:8080/hello">http://localhost:8080/hello</a> ,可以看到输出的结果 hello world，有没有感jio很简单啊！</p>
 <h1 id="5-热部署介绍"><a href="#5-热部署介绍" class="headerlink" title="5.热部署介绍"></a>5.热部署介绍</h1><blockquote>
 <p>热部署在现在日常开发中已经很常见了，具体配置是在pom.xml中添加一个devtools依赖即可。</p>
 </blockquote>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-devtools<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
 
 <h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h1><p>以上就是一个简单创建一个SpringBoot项目的具体实现流程，我们想要实现什么功能只需要在pom.xml中引入对应的依赖就好。</p>
 <p>Maven仓库：<a target="_blank" rel="noopener" href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
@@ -386,6 +386,12 @@
                   <article class="post-next col-6">
                     
                     
+                      <a href="/2020/08/28/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
                   </article>
                 </div>
               
@@ -402,14 +408,14 @@
       addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
       addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
         var gitalk = new Gitalk({
-          clientID: 'ecd7bc7d1ce755c62e23',
-          clientSecret: '935a27429e4e8984031cda200fc1212e71739e41',
-          repo: 'ifknow.github.io',
+          clientID: 'c3051c1e9cd6cc171825',
+          clientSecret: 'd7dca2311bd8ace87d703ff317b97b51c656d1e9',
+          repo: 'blog-comments',
           owner: 'ifknow',
           admin: ["ifknow"],
           id: md5(location.pathname),
           language: 'zh-CN',
-          labels: ["讲文明，树新风！文明发言！"],
+          labels: ["Gitalk"],
           perPage: 20,
           pagerDirection: 'last',
           createIssueManually: true,
@@ -753,7 +759,7 @@
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
+        collapseDepth: 6,
         scrollSmooth: true,
         headingsOffset: -boardTop
       });
@@ -788,10 +794,10 @@
   <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
-      placement: "right",
+      placement: "left",
       visible: "hover",
       
-      icon: "❡"
+      icon: "§"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -896,17 +902,6 @@
 
 
 
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?94f2b86da7c6d203c9f7e1ceea0fa13c";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
   
 
   
