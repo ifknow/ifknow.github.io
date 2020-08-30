@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/logo.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ifknow">
+  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
+  <title>SpringBoot（三）SpringBoot中定时任务的用法 - ifknow | 分享技术,享受生活</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-dark.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>ifknow</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/posts.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-29 13:38" pubdate>
+      星期六, 八月 29日 2020, 1:38 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">SpringBoot（三）SpringBoot中定时任务的用法</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：星期六, 八月 29日 2020, 1:54 下午
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><blockquote>
+<p>在日常的业务开发中，经常会有这样的需求：每天凌晨1点定时备份数据库，定时排查某条数据等业务需求。实现这样的需求就要用到定时任务了。<br>在SpringBoot中也有对定时任务支持。</p>
+</blockquote>
+<ul>
+<li>实现定时任务的步骤<ul>
+<li>启动类上加@EnableScheduling注解</li>
+<li>编写定时任务要执行的代码，并把任务类和方法交有Spring IOC容器管理</li>
+<li>了解 cron 表达式<br>新建一个SpringBoot项目，只需要引入<code>spring-boot-starter</code>依赖</li>
+</ul>
+</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
+
+<h1 id="1-在启动类上加上-EnableScheduling注解"><a href="#1-在启动类上加上-EnableScheduling注解" class="headerlink" title="1.在启动类上加上@EnableScheduling注解"></a>1.在启动类上加上@EnableScheduling注解</h1><div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-meta">@EnableScheduling</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpringBootShedulerApplication</span> </span>&#123;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        SpringApplication.run(SpringBootShedulerApplication.class, args);
+    &#125;
+&#125;</code></pre></div>
+
+<h1 id="2-编写任务代码"><a href="#2-编写任务代码" class="headerlink" title="2.编写任务代码"></a>2.编写任务代码</h1><div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SchedulerOutPutTask</span> </span>&#123;
+    <span class="hljs-meta">@Scheduled(cron = &quot;*/5 * * * * ?&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">schedulerOutPutTask</span><span class="hljs-params">()</span> </span>&#123;
+        System.out.println(<span class="hljs-keyword">new</span> Date());
+    &#125;
+&#125;</code></pre></div>
+
+<blockquote>
+<p>启动运行定时任务就会运行，定时任务代码中的业务根据自己业务需求写在方法中并用@Scheduled(cron=””)标识。</p>
+</blockquote>
+<h1 id="3-了解cron表达式"><a href="#3-了解cron表达式" class="headerlink" title="3.了解cron表达式"></a>3.了解cron表达式</h1><blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35860138/article/details/82738215">https://blog.csdn.net/qq_35860138/article/details/82738215</a></p>
+</blockquote>
+<blockquote>
+<p>对于定时任务的实现，除业务代码外，最终还是由<code>cron</code>表达式进行控制执行的周期。</p>
+</blockquote>
+<h2 id="3-1-cron示例"><a href="#3-1-cron示例" class="headerlink" title="3.1 cron示例"></a>3.1 cron示例</h2><table>
+<thead>
+<tr>
+<th>cron表达式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 0 10,14,16  *  *  ?</td>
+<td>每天上午10点，下午2点，4点</td>
+</tr>
+<tr>
+<td>0 0/30 9-17 * * ?</td>
+<td>朝九晚五工作时间内每半小时</td>
+</tr>
+<tr>
+<td>0 0 12 ? * WED</td>
+<td>表示每个星期三中午12点</td>
+</tr>
+<tr>
+<td>0 0 12 * * ?</td>
+<td>每天12点触发</td>
+</tr>
+<tr>
+<td>0 15 10 ? * *</td>
+<td>每天10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 * * ?</td>
+<td>每天10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 * * ? *</td>
+<td>每天10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 * * ? 2005</td>
+<td>2005年每天10点15分触发</td>
+</tr>
+<tr>
+<td>0 * 14 * * ?</td>
+<td>每天下午的 2点到2点59分每分触发</td>
+</tr>
+<tr>
+<td>0 0/5 14 * * ?</td>
+<td>每天下午的 2点到2点59分(整点开始，每隔5分触发)</td>
+</tr>
+<tr>
+<td>0 0/5 14,18 * * ?</td>
+<td>每天下午的 2点到2点59分、18点到18点59分(整点开始，每隔5分触发)</td>
+</tr>
+<tr>
+<td>0 0-5 14 * * ?</td>
+<td>每天下午的 2点到2点05分每分触发</td>
+</tr>
+<tr>
+<td>0 10,44 14 ? 3 WED</td>
+<td>3月每周三下午的 2点10分和2点44分触发</td>
+</tr>
+<tr>
+<td>0 15 10 ? * MON-FRI</td>
+<td>从周一到周五每天上午的10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 15 * ?</td>
+<td>每月15号上午10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 L * ?</td>
+<td>每月最后一天的10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 ? * 6L</td>
+<td>每月最后一周的星期五的10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 ? * 6L 2002-2005</td>
+<td>从2002年到2005年每月最后一周的星期五的10点15分触发</td>
+</tr>
+<tr>
+<td>0 15 10 ? * 6#3</td>
+<td>每月的第三周的星期五开始触发</td>
+</tr>
+<tr>
+<td>0 0 12 1/5 * ?</td>
+<td>每月的第一个中午开始每隔5天触发一次</td>
+</tr>
+<tr>
+<td>0 11 11 11 11 ?</td>
+<td>每年的11月11号 11点11分触发(光棍节)</td>
+</tr>
+<tr>
+<td>0 0 1 * * ?</td>
+<td>每天凌晨一点执行一次</td>
+</tr>
+</tbody></table>
+<h2 id="3-2-cron-表达式格式"><a href="#3-2-cron-表达式格式" class="headerlink" title="3.2 cron 表达式格式"></a>3.2 cron 表达式格式</h2><p>cron 表达式分为七个域：<br><font color=red>秒 分 时 日 月 周 年</font><br>每一个域之间用空格连接，不指定”年”域时，年域可以省略不写：<br><font color=red>秒 分 时 日 月 周</font></p>
+<h2 id="3-3-cron表达式七个域列表"><a href="#3-3-cron表达式七个域列表" class="headerlink" title="3.3 cron表达式七个域列表"></a>3.3 cron表达式七个域列表</h2><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">是否必须</th>
+<th align="center">允许值</th>
+<th align="center">特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">秒</td>
+<td align="center">是</td>
+<td align="center">0 - 59</td>
+<td align="center">,  -  *  /</td>
+</tr>
+<tr>
+<td align="center">分</td>
+<td align="center">是</td>
+<td align="center">0 - 59</td>
+<td align="center">,  -  *  /</td>
+</tr>
+<tr>
+<td align="center">时</td>
+<td align="center">是</td>
+<td align="center">0 - 23</td>
+<td align="center">,  -  *  /</td>
+</tr>
+<tr>
+<td align="center">日</td>
+<td align="center">是</td>
+<td align="center">1 - 31</td>
+<td align="center">,  -  *  ? L W C</td>
+</tr>
+<tr>
+<td align="center">月</td>
+<td align="center">是</td>
+<td align="center">1 - 12 / JAN - DEC</td>
+<td align="center">,  -  *  /</td>
+</tr>
+<tr>
+<td align="center">周</td>
+<td align="center">是</td>
+<td align="center">1 - 7 / SUN - SAT</td>
+<td align="center">,  -  *  ? / L C #</td>
+</tr>
+<tr>
+<td align="center">年</td>
+<td align="center">否</td>
+<td align="center">空 / 1970 - 2099</td>
+<td align="center">,  -  *  /</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>需要注意的是”周”域中，使用数值表示时，7表示周六，1表示周日。</p>
+</blockquote>
+<h2 id="3-4-符号的使用"><a href="#3-4-符号的使用" class="headerlink" title="3.4 符号的使用"></a>3.4 符号的使用</h2><h3 id="3-4-1-所有域均可用”-”-”-“-”-”-”-“"><a href="#3-4-1-所有域均可用”-”-”-“-”-”-”-“" class="headerlink" title="3.4.1 所有域均可用”,”,”-“,”*”,”/“"></a>3.4.1 所有域均可用”,”,”-“,”*”,”/“</h3><ul>
+<li><code>,</code>    x,y表示x和y</li>
+<li><code>-</code>    x-y表示x到y</li>
+<li><code>*</code>    表示每TIME</li>
+<li><code>/</code>    x/y表示从x起，每隔y</li>
+</ul>
+<h3 id="3-4-2-“日”域另有”-”-”L”-”W”-”C”"><a href="#3-4-2-“日”域另有”-”-”L”-”W”-”C”" class="headerlink" title="3.4.2 “日”域另有”?”,”L”,”W”,”C”"></a>3.4.2 “日”域另有”?”,”L”,”W”,”C”</h3><ul>
+<li><code>?</code>    表示不指定”日”域的值。规则是指定”周”域，则”日”域必须为”?”。反之，指定”日”域，则”周”域必须为”?”。如0 0 12 ? * MON 或 0 0 12 1 * ?</li>
+<li><code>L</code>    2种写法。一，表示月末几天，如2L， 表示月末的2天。二，表示月末倒数第几天，如L-3，表示月末倒数第3天。</li>
+<li><code>W</code>    表示临近某日的工作日，如15W，表示最接近15号的工作日，可能是15号（刚好是工作日）、15号前（刚好周六）或15号后（刚好周日）。</li>
+<li><code>C</code>    表示和Calendar计划关联的值，如1C表示，1日或1日后包括Carlendar的第一天。</li>
+<li><code>LW</code>    L和W的组合，只能出现在”日”域中。表示某月最后一个工作日，不一定是周五（详细见结尾PS）。</li>
+</ul>
+<h3 id="3-4-3-“周”域另有”-”-”L”-”-”-”C”"><a href="#3-4-3-“周”域另有”-”-”L”-”-”-”C”" class="headerlink" title="3.4.3 “周”域另有”?”,”L”,”#”,”C”"></a>3.4.3 “周”域另有”?”,”L”,”#”,”C”</h3><ul>
+<li><code>?</code>    表示不指定”周”域。规则是指定”日”域值，则”周”域值必须为”?”。反之，指定”周”域值，则”日”域值必须为”?”。如0 0 12 1 * ? 或 0 0 12 ？ * MON</li>
+<li><code>L</code>    表示某月的最后一个周几，如1L， 表示某月的最后一个周日（1表示周日），7L，表示某月的最后一个周六（7表示周六）。</li>
+<li><code>#</code>    只能出现在”周”域中，表示第几个周几，x#y，y表示第几个，x表示周的值，如6#2，表示第2个周五（6表示周五）。</li>
+<li><code>C</code>    表示和Calendar计划关联的值，如1C表示，周日或周日后包括Carlendar的第一天。</li>
+</ul>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>“日域”域中，L和W组合为”LW”时，网上有很多种定义，比如：<br>说法一：LW表示某月的最后一个工作日<br>说法二：LW某月最后一周的最后一个工作日，即周五 </p>
+</blockquote>
+<h2 id="3-5-cron表达式在线生成工具"><a href="#3-5-cron表达式在线生成工具" class="headerlink" title="3.5 cron表达式在线生成工具"></a>3.5 cron表达式在线生成工具</h2><p><a target="_blank" rel="noopener" href="http://www.pppet.net/">cron表达式在线生成工具</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://github.com/ifknow/spring-boot-examples/tree/master/spring-boot-scheduler">示例代码-GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/ifknow/spring-boot-examples/tree/master/spring-boot-scheduler">示例代码-Gitee</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/SpringBoot/">SpringBoot</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Scheduler/">Scheduler</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SpringBoot/">SpringBoot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Scheduler/">Scheduler</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/29/%E5%8F%8B%E9%93%BE%E6%B7%BB%E5%8A%A0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">友链添加</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/28/SpringBoot%EF%BC%88%E4%BA%8C%EF%BC%89Redis%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">SpringBoot（二）Redis的使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    function loadGitalk() {
+      addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
+      addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: 'c3051c1e9cd6cc171825',
+          clientSecret: 'd7dca2311bd8ace87d703ff317b97b51c656d1e9',
+          repo: 'blog-comments',
+          owner: 'ifknow',
+          admin: ["ifknow"],
+          id: md5(location.pathname),
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 20,
+          pagerDirection: 'last',
+          createIssueManually: true,
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      });
+    }
+    waitElementVisible('gitalk-container', loadGitalk);
+  </script>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">豫ICP备20019433号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer>
+  (function () {
+    // 查询存储的记录
+    function getRecord(Counter, target) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({target})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {target, time: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    }
+
+    // 发起自增请求
+    function increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    }
+
+    // 构建自增请求体
+    function buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "time": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    }
+
+    // 校验是否为有效的 UV
+    function validUV() {
+      var key = 'LeanCloud_UV_Flag';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    }
+
+    function addCount(Counter) {
+      var enableIncr = 'true' === 'true' && window.location.hostname !== 'localhost';
+      var getterArr = [];
+      var incrArr = [];
+
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#leancloud-site-pv-container');
+      if (pvCtn || enableIncr) {
+        var pvGetter = getRecord(Counter, 'site-pv').then((record) => {
+          incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-pv');
+          if (ele) {
+            ele.innerText = record.time + 1;
+            if (pvCtn) {
+              pvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#leancloud-site-uv-container');
+      if (uvCtn || enableIncr) {
+        var uvGetter = getRecord(Counter, 'site-uv').then((record) => {
+          var vuv = validUV();
+          vuv && incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-uv');
+          if (ele) {
+            ele.innerText = record.time + (vuv ? 1 : 0);
+            if (uvCtn) {
+              uvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 如果是文章，请求文章的浏览数，并自增
+      if ('true' === 'true') {
+        var viewCtn = document.querySelector('#leancloud-post-views-container');
+        if (viewCtn || enableIncr) {
+          var target = decodeURI('/2020/08/29/SpringBoot%EF%BC%88%E4%B8%89%EF%BC%89SpringBoot%E4%B8%AD%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%94%A8%E6%B3%95/');
+          var viewGetter = getRecord(Counter, target).then((record) => {
+            incrArr.push(buildIncrement(record.objectId))
+            if (viewCtn) {
+              var ele = document.querySelector('#leancloud-post-views');
+              if (ele) {
+                ele.innerText = (record.time || 0) + 1;
+                viewCtn.style.display = 'inline';
+              }
+            }
+          });
+          getterArr.push(viewGetter);
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && increment(Counter, incrArr);
+        })
+      }
+    }
+
+    var app_id = 'zrFnMoI7L8dVYCUGfmBTmFkG-gzGzoHsz'
+    var app_key = '7h1obI3txkWKjMpE6uzmBpGG'
+    var server_url = 'https://zrfnmoi7.lc-cn-n1-shared.com'
+
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': app_id,
+            'X-LC-Key': app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+
+      addCount(Counter);
+    }
+
+    var api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${ app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(resp => resp.json())
+        .then(({api_server}) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SpringBoot（三）SpringBoot中定时任务的用法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
