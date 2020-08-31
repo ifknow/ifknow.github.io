@@ -17,10 +17,22 @@
   <meta name="description" content="">
   <meta name="author" content="ifknow">
   <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
-  <title>归档 - ifknow | 分享技术,享受生活</title>
+  <title>Git（一）简介及入门使用 - ifknow | 分享技术,享受生活</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-dark.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -149,7 +161,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/archive.jpg') no-repeat center center;
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/posts.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -157,6 +169,48 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-31 21:08" pubdate>
+      星期一, 八月 31日 2020, 9:08 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      361 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -169,37 +223,179 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 12 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/09/01/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8GitPages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">如何使用GitPages+Hexo搭建博客</span>
-      <time style="float: right;">09-01</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Git（一）简介及入门使用</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：星期一, 八月 31日 2020, 9:14 晚上
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <p>Git 版本控制工具的学习！</p>
+<!--more--->
 
+<p>1、首先进入 <a target="_blank" rel="noopener" href="http://www.baidu.com/link?url=Kns3ah16JEZmVyzpiySXvdyeeoOZBRJ3OKZhMqaf21G&ck=3600.10.0.0.0.179.153.0&shh=www.baidu.com">https://git-scm.com/</a> 官方网站下载合适的 Git 版本。<a target="_blank" rel="noopener" href="https://mp.csdn.net/">创作中心 </a></p>
+<p>2、下载完成后安装，下面是安装完成后的目录结构：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200616085425857.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzczNjgx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>3、安装完成后在任意位置，鼠标右键，会出现 Git Gui Here和 Git Bash Here。可以下载一个 TortoiseGit（ <a target="_blank" rel="noopener" href="https://tortoisegit.org/">https://tortoisegit.org/</a> ）。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200616085442687.png" srcset="/img/loading.gif" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>4、点击上图中的Git Bash Here，在命令窗口执行下面的命令。</p>
+<div class="hljs"><pre><code class="hljs verilog"><span class="hljs-comment">//添加本地的git用户</span>
+git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.name</span> <span class="hljs-string">&quot;ifknow&quot;</span>
 
-              </div>
+<span class="hljs-comment">//添加本地git邮箱 </span>
+git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.email</span> <span class="hljs-string">&quot;shiyongjava@163.com&quot;</span>git</code></pre></div>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>创建 git 仓库（没有仓库）:</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//创建一个文件夹</span>
+mkdir Test 
+
+<span class="hljs-comment">//进入该文件</span>
+cd Test 
+
+<span class="hljs-comment">//初始化git 执行完毕会生成一个.git隐藏文件夹（在文件资源管理器里面--&gt;查看--&gt;勾选隐藏的项目）</span>
+git init 
+
+<span class="hljs-comment">//新建一个文件</span>
+touch README.md 
+
+<span class="hljs-comment">//将该文件加入到本地</span>
+git add README.md 
+
+<span class="hljs-comment">//将该文件提交（必须填写提交的日志）</span>
+git commit -m <span class="hljs-string">&quot;first commit&quot;</span> 
+
+<span class="hljs-comment">//推送到远程仓库origin分支下</span>
+git push origin</code></pre></div>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>*** 已有仓库?（常用）</p>
+<p>1、拉取远程仓库上的代码到本地</p>
+<div class="hljs"><pre><code class="hljs java">git clone http:<span class="hljs-comment">//192.168.x.xxx/...</span></code></pre></div>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>2、提交代码到远程仓库</p>
+<p>2.1、将修改的代码添加到本地缓存中</p>
+<div class="hljs"><pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> *</span></code></pre></div>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>2.2、提交代码</p>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;日志&quot;</span></code></pre></div>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>2.3、将代码推送到远程仓库某个分支上</p>
+<div class="hljs"><pre><code class="hljs crmsh">git pull origin <span class="hljs-literal">master</span></code></pre></div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/31/Git%EF%BC%88%E4%BA%8C%EF%BC%89%E5%88%86%E6%94%AF%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git（二）分支创建和合并操作介绍</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/29/SpringBoot%EF%BC%88%E5%85%AB%EF%BC%89SpringBoot%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%A1%88%E4%BE%8B/">
+                        <span class="hidden-mobile">SpringBoot（八）SpringBoot中文件上传案例</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ifknow/utteranc-blog');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    }
+    waitElementVisible('comments', loadUtterances)
+  </script>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
   </main>
 
@@ -424,10 +620,10 @@
       }
 
       // 如果是文章，请求文章的浏览数，并自增
-      if ('false' === 'true') {
+      if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/archives/2020/09/index.html');
+          var target = decodeURI('/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -489,6 +685,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -496,7 +717,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "Git（一）简介及入门使用&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
@@ -511,6 +732,23 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -524,6 +762,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 

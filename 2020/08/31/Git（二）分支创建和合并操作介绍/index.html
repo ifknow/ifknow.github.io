@@ -17,10 +17,22 @@
   <meta name="description" content="">
   <meta name="author" content="ifknow">
   <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
-  <title>归档 - ifknow | 分享技术,享受生活</title>
+  <title>Git（二）分支创建和合并操作介绍 - ifknow | 分享技术,享受生活</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-dark.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -149,7 +161,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/archive.jpg') no-repeat center center;
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/posts.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -157,6 +169,48 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-31 21:11" pubdate>
+      星期一, 八月 31日 2020, 9:11 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      557 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -169,37 +223,187 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 12 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/09/01/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8GitPages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">如何使用GitPages+Hexo搭建博客</span>
-      <time style="float: right;">09-01</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Git（二）分支创建和合并操作介绍</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：星期一, 八月 31日 2020, 9:14 晚上
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <p>Git进阶-分支学习！</p>
+<a id="more"></a>
 
+<blockquote>
+<p>之前我们了解过Git的安装和简单操作。参考：<a target="_blank" rel="noopener" href="https://gongshiyong.online/2020/09/01/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8GitPages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Git（一）简介和入门使用</a> 。<br>在现实的开发场景中，Git 的使用不仅仅只有一个 <code>master</code>分支，团队成员每个人都会有一个分支，自己将自己写的代码提交到自己的分支上，最后由一个人将其他分支逐一合并到 主分支上。</p>
+</blockquote>
+<blockquote>
+<p>为保证文章的完整性，文章简单介绍下 Git 的基础使用</p>
+</blockquote>
+<p>安装就略过…</p>
+<h3 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h3><ul>
+<li>在 GitHub/Gitee上面 创建一个仓库</li>
+<li>本地 Git 安装成功</li>
+</ul>
+<h3 id="2、拉取项目"><a href="#2、拉取项目" class="headerlink" title="2、拉取项目"></a>2、拉取项目</h3><p>将远程 GitHub/Gitee 上的项目 clone 到本地。</p>
+<div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/ifknow/spring-boot-examples.git</code></pre></div>
 
-              </div>
+<p>新创建的仓库只有一个 <code>master</code>分支。</p>
+<p>使用 集成开发工具 IDEA 打开项目，打开 IDEA Terminal / cmd / Git bash</p>
+<ul>
+<li>1、使用命令查看所有分支</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">git branch</code></pre></div>
+
+<p>目前只有一个master分支</p>
+<ul>
+<li>2、创建分支</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">git branch dev-test1</code></pre></div>
+
+<ul>
+<li>3、切换分支（当前分支前会有一个 <code>*</code>）</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">git checkout dev-test1</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs xml"># 快速创建并切换分支
+git checkout -b dev-test2</code></pre></div>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ndWxpbWFsbC1nc3kub3NzLWNuLWhhbmd6aG91LmFsaXl1bmNzLmNvbS9vbmVibG9nLzIwMjAwODI1MTYzMjM0MDEyLnBuZw?x-oss-process=image/format,png" srcset="/img/loading.gif"></p>
+<h3 id="3、分支操作"><a href="#3、分支操作" class="headerlink" title="3、分支操作"></a>3、分支操作</h3><ul>
+<li>1、分支提交</li>
+</ul>
+<p>上面创建好的分支，使用下面的命令将新分支推送到远程仓库。</p>
+<div class="hljs"><pre><code class="hljs xml">git push origin dev-test1</code></pre></div>
+
+<blockquote>
+<p>注意：向远程仓库推送时，第一次提示输入用户名密码，这里的用户名密码是你的 远程 GitHub / Gitee 的登录名和对应的密码。</p>
+</blockquote>
+<p>这里我以 <code>dev-ifknow``master</code>两个分支进行演示分支合并。</p>
+<p>我已经在 分支 <code>dev-ifknow</code>提交了最新的代码，将代码合并到 <code>master</code>分支。</p>
+<p>合并前需要切换到 <code>master</code>分支</p>
+<div class="hljs"><pre><code class="hljs xml">git merge dev-ifknow</code></pre></div>
+
+<p>使用merge命令将dev-ifknow的代码同步到本地master分支</p>
+<div class="hljs"><pre><code class="hljs xml">git push origin master</code></pre></div>
+
+<p>使用上面的命令将本地最新代码推送到远程 <code>master</code>分支。</p>
+<p>到此，Git 分支的创建和合并就到这里了。</p>
+<h3 id="4、删除分支"><a href="#4、删除分支" class="headerlink" title="4、删除分支"></a>4、删除分支</h3><p>将刚才的创建的测试分支进行删除并推送到远程</p>
+<div class="hljs"><pre><code class="hljs xml">git push origin -d dev-test1</code></pre></div>
+
+<p>Git 的使用可能会出现冲突等错误，感兴趣的可以自己研究。<br>今天就到这里！感谢您的阅读！</p>
+
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/01/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8GitPages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">如何使用GitPages+Hexo搭建博客</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">Git（一）简介及入门使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ifknow/utteranc-blog');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    }
+    waitElementVisible('comments', loadUtterances)
+  </script>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
   </main>
 
@@ -424,10 +628,10 @@
       }
 
       // 如果是文章，请求文章的浏览数，并自增
-      if ('false' === 'true') {
+      if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/archives/2020/09/index.html');
+          var target = decodeURI('/2020/08/31/Git%EF%BC%88%E4%BA%8C%EF%BC%89%E5%88%86%E6%94%AF%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -489,6 +693,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -496,7 +725,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "Git（二）分支创建和合并操作介绍&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
@@ -511,6 +740,23 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -524,6 +770,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
