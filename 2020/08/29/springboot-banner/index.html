@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ifknow">
   <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
-  <title>docker部署项目 - ifknow | 分享技术,享受生活</title>
+  <title>SpringBoot（六）定制启动Logo - ifknow | 分享技术,享受生活</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-08 17:23" pubdate>
-      星期二, 九月 8日 2020, 5:23 下午
+    <time datetime="2020-08-29 17:48" pubdate>
+      星期六, 八月 29日 2020, 5:48 下午
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      667 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      9
        分钟
     </span>
   
@@ -233,227 +233,114 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">docker部署项目</h1>
+            <h1 style="display: none">SpringBoot（六）定制启动Logo</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：星期二, 九月 8日 2020, 5:28 下午
+                  本文最后更新于：星期二, 九月 8日 2020, 5:54 下午
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <p>友情链接添加说明</p>
-<p>使用docker部署jar包和war包！</p>
+              <p>快来定制属于你自己的SpringBoot项目启动logo吧！</p>
 <a id="more"></a>
 
-<h1 id="0-环境"><a href="#0-环境" class="headerlink" title="0 环境"></a>0 环境</h1><blockquote>
-<p>Linux：<a target="_blank" rel="noopener" href="https://gongshiyong.online/2020/09/04/%E4%BD%BF%E7%94%A8vagrant%E5%AE%89%E8%A3%85Linux%E5%B9%B6%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/">vargrant安装Linux</a></p>
-<p>Docker：<a target="_blank" rel="noopener" href="https://gongshiyong.online/2020/09/04/%E4%BD%BF%E7%94%A8vagrant%E5%AE%89%E8%A3%85Linux%E5%B9%B6%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/#3-%E5%AE%89%E8%A3%85-Docker">Linux安装docker</a></p>
+<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h1><blockquote>
+<p>在启动 Spring Boot 项目时，默认看到 Spring Boot 启动 Logo。有些小伙伴可能就会想能不能自己定制一个专属的 Logo 呢？答案是肯定可以的。其实SpringBoot是支持自定义logo的，下面就介绍一下如何自定义logo吧！</p>
 </blockquote>
-<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><ul>
-<li>首先新建一个 SpringBoot 项目，在 pom.xml 中添加如下依赖：</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-comment">&lt;!--web模块--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.3.3.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
+<div class="hljs"><pre><code class="hljs xml">  .   ____          _            __ _ _
+ /\\ / ___&#x27;_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | &#x27;_ | &#x27;_| | &#x27;_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  &#x27;  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.3.RELEASE)</code></pre></div>
 
+<h1 id="2-实现步骤"><a href="#2-实现步骤" class="headerlink" title="2 实现步骤"></a>2 实现步骤</h1><h2 id="2-1-SpringBoot支持文本内容和图像输出"><a href="#2-1-SpringBoot支持文本内容和图像输出" class="headerlink" title="2.1 SpringBoot支持文本内容和图像输出"></a>2.1 SpringBoot支持文本内容和图像输出</h2><ul>
+<li>文本：文本图像会直接输出</li>
+<li>图像：支持gif、jpg或者png，SpringBoot会将图像转换为ASCll字符，然后再输出</li>
+</ul>
+<p>一般在使用中我们都会使用txt文本内容作为banner输出。</p>
+<p>这里分享两个自定义logo的网站：</p>
 <ul>
-<li>在 pom.xml 中的 <properties></properties> 标签中 新增 ：</li>
+<li><a target="_blank" rel="noopener" href="http://patorjk.com/software/taag/#p=display&amp;f=3D-ASCII">http://patorjk.com/software/taag/#p=display&amp;f=3D-ASCII</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.network-science.de/ascii/">http://www.network-science.de/ascii/</a></li>
 </ul>
-<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span>
-    <span class="hljs-comment">&lt;!--规定docker打包后镜像名称前缀--&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">docker.image.prefix</span>&gt;</span>springboot<span class="hljs-tag">&lt;/<span class="hljs-name">docker.image.prefix</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span></code></pre></div>
-
-<ul>
-<li>在 pom.xml 的 <build> 标签中添加 如下插件：（build 标签完整代码）</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.spotify<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>docker-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
-                <span class="hljs-comment">&lt;!--镜像名称--&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">imageName</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">dockerDirectory</span>&gt;</span>src/main/docker<span class="hljs-tag">&lt;/<span class="hljs-name">dockerDirectory</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">targetPath</span>&gt;</span>/<span class="hljs-tag">&lt;/<span class="hljs-name">targetPath</span>&gt;</span>
-                        <span class="hljs-comment">&lt;!--jar 包所在目录，缺省为target--&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
-                        <span class="hljs-comment">&lt;!--jar 包名，缺省为 $project.artifactId&#125;-$&#123;project.version&#125;--&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span></code></pre></div>
-
-<ul>
-<li>修改端口号（可选）</li>
-</ul>
-<p>在 application.properties 中新增：</p>
-<div class="hljs"><pre><code class="hljs properties"><span class="hljs-meta">server.port</span>=<span class="hljs-string">8081</span></code></pre></div>
-
-<ul>
-<li>新增一个 controller，测试使用</li>
-</ul>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.controller;
-
-<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
-<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;
-
-<span class="hljs-comment">/**</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: ifknow &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@date</span>: 2020/9/8  10:32 &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 测试</span>
-<span class="hljs-comment"> */</span>
-<span class="hljs-meta">@RestController</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloController</span> </span>&#123;
-    <span class="hljs-meta">@RequestMapping(&quot;/hello&quot;)</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">hello</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello Docker!&quot;</span>;
-    &#125;
-&#125;</code></pre></div>
-
-<ul>
-<li>在 <u>src/main</u> 下新建 <u>docker</u> 文件夹，在 <u>docker</u> 文件夹下创建 <u><strong>Dockerfile</strong></u> 文件（<strong>重要！</strong>）</li>
-</ul>
-<p>Dockerfile 内容如下：</p>
-<div class="hljs"><pre><code class="hljs xml"># 使用 JDK 8 环境为基础环境，如果镜像不是本地的将会从 DockerHub 进行下载
-FROM openjdk:8-jdk-alpine
-# 在宿主机的 /var/lib/docker 目录下创建一个临时文件并把它链接到 tomcat 容器的工作目录 /tmp目录
-VOLUME /tmp
-# 复制文件并重命名 spring-boot-docker-1.0.jar 表示打包后的 jar 包名称
-ADD spring-boot-docker-1.0.jar app.jar
-# 为了缩短Tomcat启动时间，添加 java.security.egd 的系统属性指向 /dev/urandom 作为ENTRYPOINT
-ENTRYPOINT [&quot;java&quot;,&quot;-Djava.security.egd=file:/dev/./urandom&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;]</code></pre></div>
-
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-1.png" srcset="/img/loading.gif" alt="docker-1"></p>
-<ul>
-<li>上传</li>
-</ul>
-<p>将 springboot 项目上传到 Linux 的某个目录下. 可以使用 SecureCRT or Xftp.</p>
-<ul>
-<li>其他</li>
-</ul>
-<p>Linux 环境要安装 <strong>maven、docker</strong>。</p>
-<h1 id="2-部署-springboot-jar包项目"><a href="#2-部署-springboot-jar包项目" class="headerlink" title="2 部署 springboot jar包项目"></a>2 部署 springboot jar包项目</h1><ul>
-<li>进入到 项目目录下：</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml">cd spring-boot-docker/</code></pre></div>
-
-<ul>
-<li>执行打包操作：</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml">mvn clean package</code></pre></div>
-
-<ul>
-<li>运行 jar 包 测试</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml">java -jar target/spring-boot-docker-1.0.jar</code></pre></div>
-
-<ul>
-<li>启动成功后，构建 Dockerfile 镜像</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml">mvn package docker:build</code></pre></div>
-
-<p>…..赖心等待，出现下图所示内容，说明构建镜像成功。</p>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-2.png" srcset="/img/loading.gif" alt="docker-2"></p>
-<ul>
-<li>查看镜像</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml"># 列出所有镜像
-docker images</code></pre></div>
-
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-3.png" srcset="/img/loading.gif" alt="docker-3"></p>
-<ul>
-<li>运行镜像</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml">docker run -p 8081:8081 -t springboot/spring-boot-docker
-# -p 8081:8081 的含义是：将本地主机的 8081 端口映射到容器的 8081 端口（冒号前是主机端口）
-# -t springboot/spring-boot-docker 的含义是：运行那个镜像</code></pre></div>
-
-<ul>
-<li>查看进行中的镜像</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml">docker ps
-
-# docker ps -a #查看所有所有镜像包括正在运行和已结束的</code></pre></div>
-
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-4.png" srcset="/img/loading.gif" alt="docker-4"></p>
-<ul>
-<li>在浏览器中访问 <a target="_blank" rel="noopener" href="http://ip:8081/hello">http://ip:8081/hello</a> ，页面会返回 <u>Hello Docker！</u></li>
-</ul>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-5.png" srcset="/img/loading.gif" alt="docker-5"></p>
-<h1 id="3-部署-war-包项目"><a href="#3-部署-war-包项目" class="headerlink" title="3 部署 war 包项目"></a>3 部署 war 包项目</h1><blockquote>
-<p>新建一个 war 包项目比较复杂，这里给出一个方案：在上面的 Jar 包项目的基础上改动！</p>
+<h2 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2 配置"></a>2.2 配置</h2><p>在SpringBoot项目的<code>src/main/resources</code>目录下新建一个 File 命名为 banner.txt或者banner.gif。<br>然后再 banner.txt 中粘贴上在上面网站中自定义的 Logo。</p>
+<p>除此之外，还可以对logo进行设置字体大小，颜色，SpringBoot版本号等。</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>${application.version}</td>
+<td>MANIFEST.MF 中定义的版本。如：1.0</td>
+</tr>
+<tr>
+<td>${application.formatted-version}</td>
+<td>MANIFEST.MF<code>中定义的版本，并添加一个</code>v<code> 前缀。如：</code>v1.0</td>
+</tr>
+<tr>
+<td>${spring-boot.version}</td>
+<td>Spring Boot 版本。如：<code>2.1.1.RELEASE</code>.</td>
+</tr>
+<tr>
+<td>${spring-boot.formatted-version}</td>
+<td>Spring Boot 版本，并添加一个 <code>v</code> 前缀。如：<code>v2.1.1.RELEASE</code></td>
+</tr>
+<tr>
+<td><code>$&#123;Ansi.NAME&#125;</code> (or <code>$&#123;AnsiColor.NAME&#125;</code>, <code>$&#123;AnsiBackground.NAME&#125;</code>, <code>$&#123;AnsiStyle.NAME&#125;</code>)</td>
+<td>ANSI 颜色、字体。更多细节，参考：<a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-boot/tree/v2.1.1.RELEASE/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/ansi/AnsiPropertySource.java"><code>AnsiPropertySource</code></a>。</td>
+</tr>
+<tr>
+<td>${application.title}</td>
+<td><code>MANIFEST.MF</code> 中定义的应用名。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注：${} 设置字体颜色的变量之间不能换行或空格分隔，否则会导致除最后一个变量外，都不生效。</p>
 </blockquote>
-<p>修改 pom.xml </p>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-6.png" srcset="/img/loading.gif" alt="docker-6"></p>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-7.png" srcset="/img/loading.gif" alt="docker-7"></p>
-<ul>
-<li>将项目打包后的 war 包，上传到服务器指定目录下！</li>
-<li>安装 tomcat 镜像并启动</li>
-</ul>
-<div class="hljs"><pre><code class="hljs xml"># 搜索tomcat镜像
-docker search tomcat
+<p>同时也可以在application.yml中对banner进行配置</p>
+<div class="hljs"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-comment"># banner-mode有三种模式：console-打印在控制台，log-以日志输出，off-关闭</span>
+    <span class="hljs-attr">banner-mode:</span> <span class="hljs-string">console</span>
+  <span class="hljs-attr">banner:</span>
+    <span class="hljs-comment"># 指定文本banner字符编码</span>
+    <span class="hljs-attr">charset:</span> <span class="hljs-string">utf-8</span>
+    <span class="hljs-comment"># 指定文本banner路径</span>
+    <span class="hljs-attr">location:</span> <span class="hljs-string">classpath:banner.txt</span>
+    <span class="hljs-attr">image:</span>
+      <span class="hljs-comment"># 指定图像banner路径</span>
+      <span class="hljs-attr">location:</span> <span class="hljs-string">banner.gif</span>
+      <span class="hljs-comment"># 指定图像banner宽度</span>
+      <span class="hljs-attr">width:</span> <span class="hljs-number">76</span>
+      <span class="hljs-comment"># 指定图像banner高度</span>
+      <span class="hljs-attr">height:</span>
+      <span class="hljs-comment"># 指定图像banner距离左边界字符数</span>
+      <span class="hljs-attr">margin:</span> <span class="hljs-number">2</span>
+      <span class="hljs-comment"># 指定图像banner是否转换为黑色控制台主题</span>
+      <span class="hljs-attr">invert:</span> <span class="hljs-literal">false</span></code></pre></div>
 
-# 下载镜像
-docker pull docker.io/tomcat
+<p>banner.txt内容：</p>
+<div class="hljs"><pre><code class="hljs tex"> ___  ________ ___  __    ________   ________  ___       __
+|<span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> _____<span class="hljs-tag">\<span class="hljs-name">\</span></span>  <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>|<span class="hljs-tag">\<span class="hljs-name"> </span></span>  ___  <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span>  __  <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>    |<span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
+<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>_/<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">/</span></span>  /|<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>   <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
+ <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span>  __<span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>  ___  <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> __<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
+  <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>| <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\<span class="hljs-name">|</span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name">_</span></span><span class="hljs-tag">\<span class="hljs-name"> </span></span> <span class="hljs-tag">\</span>
+   <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span>  <span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name">\</span></span> <span class="hljs-tag">\<span class="hljs-name">_</span></span>_<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>______<span class="hljs-tag">\<span class="hljs-name"> </span></span><span class="hljs-tag">\<span class="hljs-name">_</span></span>___________<span class="hljs-tag">\</span>
+    <span class="hljs-tag">\<span class="hljs-name">|</span></span>__|<span class="hljs-tag">\<span class="hljs-name">|</span></span>__|    <span class="hljs-tag">\<span class="hljs-name">|</span></span>__| <span class="hljs-tag">\<span class="hljs-name">|</span></span>__|<span class="hljs-tag">\<span class="hljs-name">|</span></span>__| <span class="hljs-tag">\<span class="hljs-name">|</span></span>__|<span class="hljs-tag">\<span class="hljs-name">|</span></span>_______|<span class="hljs-tag">\<span class="hljs-name">|</span></span>____________|
 
-# 启动 tomcat 镜像
-# -d 的含义是后台运行 -p 的含义是端口映射，将主机的 8088 端口 映射到 docker 容器端口
-docker run -d -p 8088:8080 docker.io/tomcat</code></pre></div>
+:: Spring Boot ::             (v<span class="hljs-formula">$&#123;spring-boot.version&#125;)</span>
+<span class="hljs-formula">:: Spring Boot Tutorial ::    (v1.0.0)</span></code></pre></div>
 
-<ul>
-<li>测试</li>
-</ul>
-<p>打开浏览器 访问 <a target="_blank" rel="noopener" href="http://ip:8088/">http://ip:8088</a> 。</p>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-8.png" srcset="/img/loading.gif" alt="docker-8"></p>
-<p><strong>注意：</strong>如果出现404，可能的原因的端口未放开。但是我并不是这个原因，经过 查看 docker 内的 tomcat 容器目录和 tomcat 的官方目录 可以看到 容器中 的 webapp.dist 才是正确的webapp目录。</p>
-<p><strong>解决方法：</strong></p>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-9.png" srcset="/img/loading.gif" alt="docker-9"></p>
-<p>(图片来源于：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40891009/article/details/104012792">https://blog.csdn.net/qq_40891009/article/details/104012792</a>)</p>
-<img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-10.png" srcset="/img/loading.gif" alt="docker-10" style="zoom:67%;" />
-
-<p>(图片来源于：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40891009/article/details/104012792">https://blog.csdn.net/qq_40891009/article/details/104012792</a>)</p>
-<ul>
-<li>war 包部署</li>
-</ul>
-<p>将 我们穿过来的 war 包 拷贝到 tomcat 容器的 webapps 下</p>
-<p>查看当前运行的镜像：</p>
-<div class="hljs"><pre><code class="hljs xml">docker ps</code></pre></div>
-
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-11.png" srcset="/img/loading.gif" alt="docker-11"></p>
-<p>拷贝操作：</p>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-12.png" srcset="/img/loading.gif" alt="docker-12"></p>
-<div class="hljs"><pre><code class="hljs xml">docker cp /root/workspace/spring-boot-docker-0.0.1-SNAPSHOT.war 8f63b712c7f:/usr/local/tomcat/webapps
-# cp 的含义是拷贝
-# /root/workspace/spring-boot-docker-0.0.1-SNAPSHOT.war 的含义是war包路径
-# 8f63b712c7f:/usr/local/tomcat/webapps：8f63b712c7f的含义是tomcat容器的 container_id</code></pre></div>
-
-<p>tomcat 容器会自动将 war 包 解压。</p>
-<ul>
-<li>测试访问</li>
-</ul>
-<p>在浏览器中访问：<a target="_blank" rel="noopener" href="http://ip:8088/spring-boot-docker-0.0.1-SNAPSHOT/hello">http://ip:8088/spring-boot-docker-0.0.1-SNAPSHOT/hello</a></p>
-<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-8/docker-13.png" srcset="/img/loading.gif" alt="docker"></p>
+<p>启动应用后，控制台将打印如下 logo：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200820095647273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzczNjgx,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ifknow/spring-boot-examples/tree/master/spring-boot-banner">示例代码-GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/ifknow/spring-boot-examples/tree/master/spring-boot-banner">示例代码-Gitee</a></p>
 
             </div>
             <hr>
@@ -463,11 +350,7 @@ docker run -d -p 8088:8080 docker.io/tomcat</code></pre></div>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Linux/docker/">docker</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Linux/docker/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">项目部署</a>
+                      <a class="hover-with-bg" href="/categories/SpringBoot/">SpringBoot</a>
                     
                   </div>
                 
@@ -475,9 +358,7 @@ docker run -d -p 8088:8080 docker.io/tomcat</code></pre></div>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
-                    
-                      <a class="hover-with-bg" href="/tags/docker/">docker</a>
+                      <a class="hover-with-bg" href="/tags/SpringBoot/">SpringBoot</a>
                     
                   </div>
                 
@@ -490,12 +371,18 @@ docker run -d -p 8088:8080 docker.io/tomcat</code></pre></div>
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2020/08/29/springboot-swagger2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringBoot（七）swagger2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/04/vagrantLinux/">
-                        <span class="hidden-mobile">使用vagrant安装软件并使用docker安装常用软件</span>
+                      <a href="/2020/08/29/springboot-mybatis/">
+                        <span class="hidden-mobile">SpringBoot（五）Mybatis在SpringBoot中的使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -781,7 +668,7 @@ docker run -d -p 8088:8080 docker.io/tomcat</code></pre></div>
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/2020/09/08/docker/');
+          var target = decodeURI('/2020/08/29/springboot-banner/');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -875,7 +762,7 @@ docker run -d -p 8088:8080 docker.io/tomcat</code></pre></div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "docker部署项目&nbsp;",
+        "SpringBoot（六）定制启动Logo&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,

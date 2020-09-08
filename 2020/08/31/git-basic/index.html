@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ifknow">
   <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
-  <title>Linux环境安装软件 - ifknow | 分享技术,享受生活</title>
+  <title>Git（一）入门简介 - ifknow | 分享技术,享受生活</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-02 23:01" pubdate>
-      星期三, 九月 2日 2020, 11:01 晚上
+    <time datetime="2020-08-31 21:08" pubdate>
+      星期一, 八月 31日 2020, 9:08 晚上
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      361 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      4
        分钟
     </span>
   
@@ -233,201 +233,70 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Linux环境安装软件</h1>
+            <h1 style="display: none">Git（一）入门简介</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：星期二, 九月 8日 2020, 5:24 下午
+                  本文最后更新于：星期二, 九月 8日 2020, 5:47 下午
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h3 id="一、在Linux下安装tomcat"><a href="#一、在Linux下安装tomcat" class="headerlink" title="一、在Linux下安装tomcat"></a>一、在Linux下安装tomcat</h3><blockquote>
-<p>本文章以centos7为例。连接工具使用Xshell/Xftp。<br>下载地址：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1GduGyJAdE6DhUvRJFLNWqw">https://pan.baidu.com/s/1GduGyJAdE6DhUvRJFLNWqw</a> 提取码：<code>se85</code></p>
-</blockquote>
-<p>1.1、首先在tomcat官网下载tomcat Linux版本（<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-80.cgi%EF%BC%89%EF%BC%8C%E4%B8%8B%E8%BD%BDtar.gz%E7%BB%93%E5%B0%BE%E7%9A%84%E6%96%87%E4%BB%B6%E3%80%82">https://tomcat.apache.org/download-80.cgi），下载tar.gz结尾的文件。</a><br><img src="https://img-blog.csdnimg.cn/20200616150112767.png" srcset="/img/loading.gif" alt="tomcat下载"><br>1.2、通过Xftp工具将下载的tomcatxxx.tar,gz文件传送至linux系统下</p>
-<p>1.3、通过 tar -zxvf 命令进行解压文件</p>
-<div class="hljs"><pre><code class="hljs powershell">tar <span class="hljs-literal">-zxvf</span> apache<span class="hljs-literal">-tomcat</span><span class="hljs-literal">-XXXX</span>.tar.gz</code></pre></div>
-<p>1.4、可以使用ls、ls -a、ll命令查看当前目录，将解压好的apache-tomcat-xxxx移动到/usr/local/目录下，并重命名为tomcat7</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-built_in">mv</span> apache<span class="hljs-literal">-tomcat</span><span class="hljs-literal">-7</span>.<span class="hljs-number">0.73</span> /usr/local/tomcat7</code></pre></div>
+              <p>Git 版本控制工具的学习！</p>
+<a id="more"></a>
 
-<p>1.5、使用cd 命令切换到tomcat目录的bin下面</p>
-<p>1.6、启动tomcat命令</p>
-<div class="hljs"><pre><code class="hljs powershell">sh startup.sh</code></pre></div>
+<p>1、首先进入 <a target="_blank" rel="noopener" href="http://www.baidu.com/link?url=Kns3ah16JEZmVyzpiySXvdyeeoOZBRJ3OKZhMqaf21G&ck=3600.10.0.0.0.179.153.0&shh=www.baidu.com">https://git-scm.com/</a> 官方网站下载合适的 Git 版本。<a target="_blank" rel="noopener" href="https://mp.csdn.net/">创作中心 </a></p>
+<p>2、下载完成后安装，下面是安装完成后的目录结构：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200616085425857.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzczNjgx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>3、安装完成后在任意位置，鼠标右键，会出现 Git Gui Here和 Git Bash Here。可以下载一个 TortoiseGit（ <a target="_blank" rel="noopener" href="https://tortoisegit.org/">https://tortoisegit.org/</a> ）。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200616085442687.png" srcset="/img/loading.gif" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>4、点击上图中的Git Bash Here，在命令窗口执行下面的命令。</p>
+<div class="hljs"><pre><code class="hljs verilog"><span class="hljs-comment">//添加本地的git用户</span>
+git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.name</span> <span class="hljs-string">&quot;ifknow&quot;</span>
 
-<p>1.7、关闭tomcat命令：</p>
-<div class="hljs"><pre><code class="hljs powershell">sh shutdown.sh</code></pre></div>
+<span class="hljs-comment">//添加本地git邮箱 </span>
+git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.email</span> <span class="hljs-string">&quot;shiyongjava@163.com&quot;</span>git</code></pre></div>
 
-<p>1.8、查看tomcat端口</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-comment">#命令行判断tomcat是否启动成功（这里必须安装wget）</span>
-<span class="hljs-built_in">wget</span> http://localhost:<span class="hljs-number">8080</span>/</code></pre></div>
-<p>Tomcat启动成功：<br><img src="https://img-blog.csdnimg.cn/20200616150642742.png" srcset="/img/loading.gif" alt="tomcat启动成功"></p>
-<h3 id="二、Linux系统下安装jdk及环境配置（两种方法）"><a href="#二、Linux系统下安装jdk及环境配置（两种方法）" class="headerlink" title="二、Linux系统下安装jdk及环境配置（两种方法）"></a>二、Linux系统下安装jdk及环境配置（两种方法）</h3><blockquote>
-<p>第一种属于傻瓜式安装，一键安装即可（yum安装）；<br>第二种手动安装，需要自己去Oracle官网下载需要的jdk版本，然后解压并配置环境</p>
-</blockquote>
-<p>2.1、yum一键安装（无脑操作  一个命令就能安装 哈哈哈）</p>
-<p>2.2.1.首先执行以下命令查看可安装的jdk版本：</p>
-<div class="hljs"><pre><code class="hljs java">yum -y list java*</code></pre></div>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>创建 git 仓库（没有仓库）:</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//创建一个文件夹</span>
+mkdir Test 
 
-<p>2.2.2.选择自己需要的jdk版本进行安装，比如这里安装1.8，执行以下命令：</p>
-<div class="hljs"><pre><code class="hljs java">yum install -y java-<span class="hljs-number">1.8</span>.<span class="hljs-number">0</span>-openjdk-devel.x86_64</code></pre></div>
-<p>等待安装完成即可。</p>
-<p>2.2.3.安装完成之后，查看安装的jdk版本，输入以下指令：</p>
-<div class="hljs"><pre><code class="hljs java">java -version</code></pre></div>
-<p>此处便可以看到自己安装的jdk版本信息。你如果好奇这个自动安装把jdk安装到哪里去了，其实你可以在usr/lib/jvm下找到它们。ok，完成！</p>
-<p>2.2、手动安装</p>
-<blockquote>
-<p>如果觉得yum一键安装不大好，其实可以手动安装的，个人建议还是手动安装更好，可以安装到想要安装的目录下，更能加深自己的体会。下面我们将进行手动安装jdk。</p>
-</blockquote>
-<p>2.2.1.去Oracle官网（<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html%EF%BC%89%E4%B8%8B%E8%BD%BD%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84jdk%E7%89%88%E6%9C%AC%EF%BC%8C%E6%88%91%E8%BF%99%E9%87%8C%E7%94%A8%E7%9A%84%E6%98%AF">https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html）下载需要安装的jdk版本，我这里用的是</a> jdk-8u181-linux-x64.tar.gz</p>
-<p>2.2.2.将该压缩包放到/usr/local/jdk目录下，jdk目录需要自己手动创建，也可以叫java，名字自己随意取（见名知意），然后解压该压缩包，输入如下指令：</p>
-<div class="hljs"><pre><code class="hljs java">tar zxvf jdk-<span class="hljs-number">8</span>u181-linux-x64.tar.gz</code></pre></div>
+<span class="hljs-comment">//进入该文件</span>
+cd Test 
 
-<p>2.2.3.接下来就该配置环境变量了，输入以下指令进行配置：</p>
-<div class="hljs"><pre><code class="hljs java">vim /etc/profile</code></pre></div>
+<span class="hljs-comment">//初始化git 执行完毕会生成一个.git隐藏文件夹（在文件资源管理器里面--&gt;查看--&gt;勾选隐藏的项目）</span>
+git init 
 
-<p>输入完毕并回车，在文件尾部添加如下信息：</p>
-<div class="hljs"><pre><code class="hljs java">export JAVA_HOME=/usr/local/jdk/jdk1.<span class="hljs-number">8.0_181</span> 
-export CLASSPATH=$:CLASSPATH:$JAVA_HOME/lib/  export PATH=$PATH:$JAVA_HOME/bin</code></pre></div>
-<p>注意：第一行的JAVA_HOME=/usr/local/jdk/jdk1.8.0_181 此处等号右边的是自己的jdk实际解压目录。如果不是该目录则需要改成自己的实际目录，其他不变。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//保存并退出(先按ESC)</span>
-:wq</code></pre></div>
+<span class="hljs-comment">//新建一个文件</span>
+touch README.md 
 
-<p>2.2.4.编辑完之后，保存并退出，然后输入以下指令，刷新环境配置使其生效：</p>
-<div class="hljs"><pre><code class="hljs java">source /etc/profile</code></pre></div>
+<span class="hljs-comment">//将该文件加入到本地</span>
+git add README.md 
 
-<p>2.2.5.查看jdk是否安装成功，输入指令java -version即可。</p>
-<p>2.2.6.至此，手动安装完成~~</p>
-<h3 id="三、Linux安装mysql8-0-13步骤"><a href="#三、Linux安装mysql8-0-13步骤" class="headerlink" title="三、Linux安装mysql8.0.13步骤"></a>三、Linux安装mysql8.0.13步骤</h3><p>3.1.下载mysql-8.0.13-linux-glibc2.12-x86_64.tar.xz的安装包<br>（官网：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/%EF%BC%89">https://dev.mysql.com/downloads/mysql/）</a></p>
-<p>3.2.解压mysql-8.0.13-linux-glibc2.12-x86_64.tar.xz</p>
-<div class="hljs"><pre><code class="hljs powershell">tar <span class="hljs-literal">-xvf</span> mysql<span class="hljs-literal">-8</span>.<span class="hljs-number">0.13</span><span class="hljs-literal">-linux</span><span class="hljs-literal">-glibc2</span>.<span class="hljs-number">12</span><span class="hljs-literal">-x86_64</span>.tar.xz</code></pre></div>
-<p>3.3.将解压的文件重命名mysql，并移动到/usr/local目录下</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-built_in">mv</span> mysql<span class="hljs-literal">-8</span>.<span class="hljs-number">0.13</span><span class="hljs-literal">-linux</span><span class="hljs-literal">-glibc2</span>.<span class="hljs-number">12</span><span class="hljs-literal">-x86_64</span> mysql <span class="hljs-built_in">mv</span> mysql /usr/local/</code></pre></div>
+<span class="hljs-comment">//将该文件提交（必须填写提交的日志）</span>
+git commit -m <span class="hljs-string">&quot;first commit&quot;</span> 
 
-<p>3.4.进入到/usr/local目录下，创建用户和用户组并授权</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> /usr/local/ 
-groupadd mysql 
-useradd <span class="hljs-literal">-r</span> <span class="hljs-literal">-g</span> mysql mysql 
-<span class="hljs-comment">#注意：进入mysql文件下授权所有的文件</span>
-<span class="hljs-built_in">cd</span> mysql
-chown <span class="hljs-literal">-R</span> mysql:mysql
-<span class="hljs-comment">#修改mysql用户密码</span>
-passwd mysql</code></pre></div>
+<span class="hljs-comment">//推送到远程仓库origin分支下</span>
+git push origin</code></pre></div>
 
-<p>3.5.在/usr/local/mysql目录下，创建data文件夹</p>
-<div class="hljs"><pre><code class="hljs powershell">mkdir <span class="hljs-keyword">data</span></code></pre></div>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>*** 已有仓库?（常用）</p>
+<p>1、拉取远程仓库上的代码到本地</p>
+<div class="hljs"><pre><code class="hljs java">git clone http:<span class="hljs-comment">//192.168.x.xxx/...</span></code></pre></div>
 
-<p>3.6.初始化数据库，并会自动生成随机密码，记下等下登陆要用 （重要）</p>
-<div class="hljs"><pre><code class="hljs powershell">bin/mysqld -<span class="hljs-literal">-initialize</span> -<span class="hljs-literal">-user</span>=mysql -<span class="hljs-literal">-basedir</span>=/usr/local/mysql -<span class="hljs-literal">-datadir</span>=/usr/local/mysql/<span class="hljs-keyword">data</span> bin/mysqld -<span class="hljs-literal">-initialize</span> -<span class="hljs-literal">-user</span>=mysql -<span class="hljs-literal">-bas</span> edir=/usr/local/mysql -<span class="hljs-literal">-d</span></code></pre></div>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>2、提交代码到远程仓库</p>
+<p>2.1、将修改的代码添加到本地缓存中</p>
+<div class="hljs"><pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> *</span></code></pre></div>
 
-<p>3.7.修改/usr/local/mysql当前目录得用户 </p>
-<div class="hljs"><pre><code class="hljs powershell">chown <span class="hljs-literal">-R</span> root:root ./ <span class="hljs-comment"># chown -R mysql:mysql data</span></code></pre></div>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>2.2、提交代码</p>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;日志&quot;</span></code></pre></div>
 
-<p>3.8.执行下面命令</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-built_in">cp</span> support<span class="hljs-literal">-files</span>/my<span class="hljs-literal">-default</span>.cnf /etc/my.cnf</code></pre></div>
-
-<p>复制过去，其实也就是空白页，一开始没有my-default.cnf这个文件，可以用# touch my-default.cnf命令创建一个，并配置权限 </p>
-<div class="hljs"><pre><code class="hljs powershell">chmod <span class="hljs-number">777</span> ./my<span class="hljs-literal">-default</span>.cnf
-<span class="hljs-built_in">cd</span> support<span class="hljs-literal">-files</span>/ 
-touch my<span class="hljs-literal">-default</span>.cnf 
-chmod <span class="hljs-number">777</span> ./my<span class="hljs-literal">-default</span>.cnf 
-<span class="hljs-built_in">cd</span> ../ 
-<span class="hljs-built_in">cp</span> support<span class="hljs-literal">-files</span>/my<span class="hljs-literal">-default</span>.cnf /etc/my.cnf</code></pre></div>
-
-<p>3.9.配置my.cnf </p>
-<div class="hljs"><pre><code class="hljs powershell">vim /etc/my.cnf</code></pre></div>
-
-<div class="hljs"><pre><code class="hljs powershell">[<span class="hljs-type">mysqld</span>]
- 
-<span class="hljs-comment"># Remove leading # and set to the amount of RAM for the most important data</span>
-<span class="hljs-comment"># cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.</span>
-<span class="hljs-comment"># innodb_buffer_pool_size = 128M</span>
- 
-<span class="hljs-comment"># Remove leading # to turn on a very important data integrity option: logging</span>
-<span class="hljs-comment"># changes to the binary log between backups.</span>
-<span class="hljs-comment"># log_bin</span>
- 
-<span class="hljs-comment"># These are commonly set, remove the # and set as required.</span>
-basedir = /usr/local/mysql
-datadir = /usr/local/mysql/<span class="hljs-keyword">data</span>
-socket = /tmp/mysql.sock
-log<span class="hljs-literal">-error</span> = /usr/local/mysql/<span class="hljs-keyword">data</span>/error.log
-pid<span class="hljs-operator">-file</span> = /usr/local/mysql/<span class="hljs-keyword">data</span>/mysql.pid
-tmpdir = /tmp
-port = <span class="hljs-number">5186</span>
-<span class="hljs-comment">#lower_case_table_names = 1</span>
-<span class="hljs-comment"># server_id = .....</span>
-<span class="hljs-comment"># socket = .....</span>
-<span class="hljs-comment">#lower_case_table_names = 1</span>
-max_allowed_packet=<span class="hljs-number">32</span>M
-default<span class="hljs-literal">-authentication</span><span class="hljs-literal">-plugin</span> = mysql_native_password
-<span class="hljs-comment">#lower_case_file_system = on</span>
-<span class="hljs-comment">#lower_case_table_names = 1</span>
-log_bin_trust_function_creators = ON
-<span class="hljs-comment"># Remove leading # to set options mainly useful for reporting servers.</span>
-<span class="hljs-comment"># The server defaults are faster for transactions and fast SELECTs.</span>
-<span class="hljs-comment"># Adjust sizes as needed, experiment to find the optimal values.</span>
-<span class="hljs-comment"># join_buffer_size = 128M</span>
-<span class="hljs-comment"># sort_buffer_size = 2M</span>
-<span class="hljs-comment"># read_rnd_buffer_size = 2M </span>
- 
-sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</code></pre></div>
-<p>如果后期mysql运行报错，可以直接到<strong>log-error = /usr/local/mysql/data/error.log</strong>目录下直接查看错误日志。</p>
-<p>命令：</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-built_in">cat</span> /usr/local/mysql/<span class="hljs-keyword">data</span>/error.log</code></pre></div>
-
-<p>3.10.开机自启，进入/usr/local/mysql/support-files进行设置</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> support<span class="hljs-literal">-files</span>/ 
-<span class="hljs-built_in">cp</span> mysql.server /etc/init.d/mysql 
-chmod +x /etc/init.d/mysql</code></pre></div>
-<p>3.11.注册服务 </p>
-<div class="hljs"><pre><code class="hljs powershell">chkconfig -<span class="hljs-literal">-add</span> mysql</code></pre></div>
-
-<p>如果命令没有，在需要处理chkconfig</p>
-<div class="hljs"><pre><code class="hljs powershell">rpm <span class="hljs-literal">-aq</span> |grep chkconfig
-export PATH=/sbin:<span class="hljs-variable">$PATH</span>
-chkconfig 
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span> 
-PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>&quot;</span>:/sbin 
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span></code></pre></div>
-<p>3.12.查看是否成功</p>
-<div class="hljs"><pre><code class="hljs powershell">chkconfig -<span class="hljs-literal">-add</span> mysql chkconfig -<span class="hljs-literal">-list</span> mysql</code></pre></div>
-<p><img src="https://img-blog.csdnimg.cn/20200616153024424.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p>3.13.etc/ld.so.conf要配置路径，不然报错 </p>
-<div class="hljs"><pre><code class="hljs powershell">vim /etc/ld.so.conf  
-<span class="hljs-comment">#添加如下内容: </span>
-/usr/local/mysql/lib</code></pre></div>
-<p>3.14.配置环境变量</p>
-<div class="hljs"><pre><code class="hljs powershell">vim /etc/profile 
-source /etc/profile  
-<span class="hljs-comment">#添加如下内容： </span>
-MYSQL ENVIRONMENT export PATH=<span class="hljs-variable">$PATH:</span>/usr/local/mysql/bin:/usr/local/mysql/lib</code></pre></div>
-
-<p>3.15.登陆，这里输入上面第6步随机生成得密码，细心点输入，没有显示的，登陆成功如图所示 </p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-comment">#启动mysql服务 </span>
-[<span class="hljs-type">root</span>@<span class="hljs-type">localhost</span> <span class="hljs-type">bin</span>]<span class="hljs-comment"># service mysql start</span>
-Starting MySQL.Logging to <span class="hljs-string">&#x27;/usr/local/mysql/data/error.log&#x27;</span>.
-.. SUCCESS! 
-[<span class="hljs-type">root</span>@<span class="hljs-type">localhost</span> <span class="hljs-type">bin</span>]<span class="hljs-comment"># </span>
-<span class="hljs-comment">#修改mysql密码</span>
-mysql&gt; alter user <span class="hljs-string">&#x27;root&#x27;</span><span class="hljs-string">@&#x27;localhost&#x27; identified by &#x27;123456&#x27;;</span>
-<span class="hljs-string">Query OK, 0 rows affected (0.02 sec)</span></code></pre></div>
-<p><img src="https://img-blog.csdnimg.cn/20200616153322634.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzczNjgx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>3.16.开启Navicat远程连接</p>
-<p>alter user ‘root’@’localhost’ identified by ‘123456’; Query OK, 0 rows affected (0.02 sec) mysql&gt; </p>
-<p>[外链图片转存中…(img-WmN4tosU-1592290841576)]</p>
-<p>16.开启Navicat远程连接</p>
-<div class="hljs"><pre><code class="hljs powershell"><span class="hljs-comment"># mysql -uroot -p #进入数据库</span>
-&gt; use mysql;<span class="hljs-comment">#进入数据库</span>
-&gt; <span class="hljs-built_in">select</span> host, user, authentication_string, plugin from user;<span class="hljs-comment">#查看用户信息</span>
-&gt; GRANT ALL ON *.* TO <span class="hljs-string">&#x27;root&#x27;</span><span class="hljs-string">@&#x27;%&#x27;;#授权root用户可以远程登陆</span>
-<span class="hljs-string">&gt; flush privileges;#立即生效</span>
-<span class="hljs-string">&gt; ALTER USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;Kuaigui2019!&#x27;;#修改root用户密码</span>
-<span class="hljs-string">&gt; FLUSH PRIVILEGES;#立即生效</span>
-<span class="hljs-string">&gt; exit;#退出</span>
-<span class="hljs-string"># service mysql restart#重启mysql服务</span></code></pre></div>
-
-<hr>
-
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
+<p>2.3、将代码推送到远程仓库某个分支上</p>
+<div class="hljs"><pre><code class="hljs crmsh">git pull origin <span class="hljs-literal">master</span></code></pre></div>
             </div>
             <hr>
             <div>
@@ -436,7 +305,7 @@ mysql&gt; alter user <span class="hljs-string">&#x27;root&#x27;</span><span clas
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
                     
                   </div>
                 
@@ -444,13 +313,7 @@ mysql&gt; alter user <span class="hljs-string">&#x27;root&#x27;</span><span clas
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
-                    
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
-                    
-                      <a class="hover-with-bg" href="/tags/JDK8/">JDK8</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Tomcat/">Tomcat</a>
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
                     
                   </div>
                 
@@ -463,9 +326,9 @@ mysql&gt; alter user <span class="hljs-string">&#x27;root&#x27;</span><span clas
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/02/Java81/">
+                      <a href="/2020/08/31/git-advance/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">java8新特性介绍</span>
+                        <span class="hidden-mobile">Git（二）分支创建合并</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -473,8 +336,8 @@ mysql&gt; alter user <span class="hljs-string">&#x27;root&#x27;</span><span clas
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/01/GitPagesHexo/">
-                        <span class="hidden-mobile">如何使用GitPages+Hexo搭建博客</span>
+                      <a href="/2020/08/29/springboot-fileupload/">
+                        <span class="hidden-mobile">SpringBoot（八）文件上传案例</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -760,7 +623,7 @@ mysql&gt; alter user <span class="hljs-string">&#x27;root&#x27;</span><span clas
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/2020/09/02/Linuxinstallsoftware/');
+          var target = decodeURI('/2020/08/31/git-basic/');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -854,7 +717,7 @@ mysql&gt; alter user <span class="hljs-string">&#x27;root&#x27;</span><span clas
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Linux环境安装软件&nbsp;",
+        "Git（一）入门简介&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,

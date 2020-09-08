@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ifknow">
   <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
-  <title>SpringBoot（七）swagger2 - ifknow | 分享技术,享受生活</title>
+  <title>如何使用GitPages+Hexo搭建博客 - ifknow | 分享技术,享受生活</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-29 17:51" pubdate>
-      星期六, 八月 29日 2020, 5:51 下午
+    <time datetime="2020-09-01 00:30" pubdate>
+      星期二, 九月 1日 2020, 12:30 凌晨
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.7k 字
     </span>
   
 
@@ -233,7 +233,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">SpringBoot（七）swagger2</h1>
+            <h1 style="display: none">如何使用GitPages+Hexo搭建博客</h1>
             
               <p class="note note-info">
                 
@@ -242,223 +242,144 @@
               </p>
             
             <div class="markdown-body" id="post-body">
-              <p>前后端分离项目，使用swagger接口调试工具，方便又快捷！</p>
+              <p>快来康康如何使用GitHub+Hexo搭建属于自己的站点吧！</p>
 <a id="more"></a>
 
-<h3 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h3><blockquote>
-<p>作者现在是一名 Java 后台开发工程师，在公司负责后台业务代码的实现。公司是前后端开发的模式，这就要求后台人员写接口，前端人员调用。<br>所以这就需要一款接口文档能够实时的将后端写的接口展示给前端开发人员看。<br>目前我所了解的有两种：</p>
-<ul>
-<li>Swagger</li>
-<li>Knife4j：knife4j是为Java MVC框架集成Swagger生成Api文档的增强解决方案,前身是swagger-bootstrap-ui,取名knife4j是希望她能像一把匕首一样小巧,轻量,并且功能强悍!</li>
-</ul>
-<p>二者都能实现相同的功能。</p>
+<h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h1><p>现在博客托管网站也有很多了，我们可以在上面分享自己的生活和对知识的看法，比如CSDN、博客园、掘金等等。个人也就使用过CSDN和掘金，但是使用过一段时间后，就会发现这些博客网站或多或少，不太方便。</p>
+<blockquote>
+<p>所以来说，拥有一个自己的博客站点，是非常有必要的了。</p>
 </blockquote>
-<h3 id="1-Swagger"><a href="#1-Swagger" class="headerlink" title="1 Swagger"></a>1 Swagger</h3><h4 id="1-1-添加依赖"><a href="#1-1-添加依赖" class="headerlink" title="1.1 添加依赖"></a>1.1 添加依赖</h4><p>使用之前首先在pom.xml文件中新增Swagger所需要的依赖</p>
-<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.xiaoymin<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>swagger-bootstrap-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.9.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
-
-<p>默认创建的SpringBoot项目默认有<code>spring-boot-starter</code>，除此之外还需要引入web模块的依赖<code>spring-boot-starter-web</code>。</p>
-<h4 id="1-2-添加配置"><a href="#1-2-添加配置" class="headerlink" title="1.2 添加配置"></a>1.2 添加配置</h4><ul>
-<li>首先在application.yml中添加下面代码</li>
-</ul>
-<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">swagger2:</span>
-  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span></code></pre></div>
-
-<ul>
-<li>编写Swagger 配置类</li>
-</ul>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.config;
-
-<span class="hljs-keyword">import</span> com.ifknow.annotation.Api_Base;
-<span class="hljs-keyword">import</span> com.ifknow.annotation.Api_Business;
-<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Value;
-<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
-<span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;
-<span class="hljs-keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;
-<span class="hljs-keyword">import</span> springfox.documentation.builders.PathSelectors;
-<span class="hljs-keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;
-<span class="hljs-keyword">import</span> springfox.documentation.service.ApiInfo;
-<span class="hljs-keyword">import</span> springfox.documentation.service.Contact;
-<span class="hljs-keyword">import</span> springfox.documentation.spi.DocumentationType;
-<span class="hljs-keyword">import</span> springfox.documentation.spring.web.plugins.Docket;
-<span class="hljs-keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-<span class="hljs-comment">/**</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:19 &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: Swagger2 配置类</span>
-<span class="hljs-comment"> */</span>
-<span class="hljs-meta">@Configuration</span>
-<span class="hljs-meta">@EnableSwagger2</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Swagger2Config</span> </span>&#123;
-
-    <span class="hljs-meta">@Value(&quot;$&#123;swagger2.enable&#125;&quot;)</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> enable;
-
-    <span class="hljs-comment">/**</span>
-<span class="hljs-comment">     * 配置swagger2核心配置docket &lt;/br&gt;</span>
-<span class="hljs-comment">     * swagger访问路径：http://localhost:8081/swagger-ui.html &lt;/br&gt;</span>
-<span class="hljs-comment">     * swagger业务接口api</span>
-<span class="hljs-comment">     *</span>
-<span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span>
-<span class="hljs-comment">     */</span>
-    <span class="hljs-meta">@Bean</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Docket <span class="hljs-title">restApiBusiness</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Docket(DocumentationType.SWAGGER_2)
-                .groupName(<span class="hljs-string">&quot;业务分组接口&quot;</span>)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api_Business.class))
-                .paths(PathSelectors.any())
-                .build()
-                .enable(enable);
-    &#125;
-
-    <span class="hljs-meta">@Bean</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Docket <span class="hljs-title">restApiBase</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Docket(DocumentationType.SWAGGER_2)
-                .groupName(<span class="hljs-string">&quot;基础接口&quot;</span>)
-                .apiInfo(apiInfoBase())
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api_Base.class))
-                .paths(PathSelectors.any())
-                .build()
-                .enable(enable);
-    &#125;
-
-    <span class="hljs-function"><span class="hljs-keyword">private</span> ApiInfo <span class="hljs-title">apiInfo</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ApiInfoBuilder()
-                .title(<span class="hljs-string">&quot;业务分组接口&quot;</span>)
-                .contact(<span class="hljs-keyword">new</span> Contact(<span class="hljs-string">&quot;ifknow&quot;</span>, <span class="hljs-string">&quot;http://www.gongshiyong.online&quot;</span>, <span class="hljs-string">&quot;shiyongjava@163.com&quot;</span>))
-                .description(<span class="hljs-string">&quot;ifknow测试Swagger&quot;</span>)
-                .version(<span class="hljs-string">&quot;1.0.0&quot;</span>)
-                .termsOfServiceUrl(<span class="hljs-string">&quot;http://www,gongshiyong.online&quot;</span>)
-                .build();
-    &#125;
-
-    <span class="hljs-function"><span class="hljs-keyword">private</span> ApiInfo <span class="hljs-title">apiInfoBase</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ApiInfoBuilder()
-                .title(<span class="hljs-string">&quot;基础接口&quot;</span>)
-                .contact(<span class="hljs-keyword">new</span> Contact(<span class="hljs-string">&quot;ifknow&quot;</span>, <span class="hljs-string">&quot;http://www.gongshiyong.online&quot;</span>, <span class="hljs-string">&quot;shiyongjava@163.com&quot;</span>))
-                .description(<span class="hljs-string">&quot;ifknow测试Swagger&quot;</span>)
-                .version(<span class="hljs-string">&quot;1.0.0&quot;</span>)
-                .termsOfServiceUrl(<span class="hljs-string">&quot;http://www,gongshiyong.online&quot;</span>)
-                .build();
-    &#125;
-&#125;</code></pre></div>
-
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.annotation;
-
-<span class="hljs-keyword">import</span> java.lang.annotation.ElementType;
-<span class="hljs-keyword">import</span> java.lang.annotation.Retention;
-<span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;
-<span class="hljs-keyword">import</span> java.lang.annotation.Target;
-
-<span class="hljs-comment">/**</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:34 &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: NO Description</span>
-<span class="hljs-comment"> */</span>
-<span class="hljs-meta">@Target(ElementType.TYPE)</span>
-<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
-<span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Api_Business &#123;
-&#125;</code></pre></div>
-
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.annotation;
-
-<span class="hljs-keyword">import</span> java.lang.annotation.ElementType;
-<span class="hljs-keyword">import</span> java.lang.annotation.Retention;
-<span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;
-<span class="hljs-keyword">import</span> java.lang.annotation.Target;
-
-<span class="hljs-comment">/**</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:50 &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: NO Description</span>
-<span class="hljs-comment"> */</span>
-<span class="hljs-meta">@Target(ElementType.TYPE)</span>
-<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
-<span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Api_Base &#123;
-&#125;</code></pre></div>
-
-<h4 id="1-3-编写代码测试"><a href="#1-3-编写代码测试" class="headerlink" title="1.3 编写代码测试"></a>1.3 编写代码测试</h4><div class="hljs"><pre><code class="hljs java">![QQ截图<span class="hljs-number">20200820144932</span>](C:\Users\hainei-developer\Pictures\Saved Pictures\blog\<span class="hljs-number">8.17</span>-springboot\QQ截图<span class="hljs-number">20200820144932.</span>png)<span class="hljs-keyword">package</span> com.ifknow.controller;
-
-<span class="hljs-keyword">import</span> com.ifknow.annotation.Api_Business;
-<span class="hljs-keyword">import</span> io.swagger.annotations.Api;
-<span class="hljs-keyword">import</span> io.swagger.annotations.ApiOperation;
-<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.*;
-
-<span class="hljs-comment">/**</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Author</span>: ifknow &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span>: 2020/8/20  11:37 &lt;br&gt;</span>
-<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span>: 用户信息Controller</span>
-<span class="hljs-comment"> */</span>
-<span class="hljs-meta">@Api(value = &quot;用户管理 - 用户信息管理api&quot;, tags = &quot;用户管理 - 用户信息管理api&quot;)</span>
-<span class="hljs-meta">@RestController</span>
-<span class="hljs-meta">@RequestMapping(&quot;/user&quot;)</span>
-<span class="hljs-meta">@Api_Business</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;
-
-    <span class="hljs-meta">@ApiOperation(value = &quot;新增用户信息&quot;, notes = &quot;新增用户信息&quot;)</span>
-    <span class="hljs-meta">@PostMapping(&quot;/insert&quot;)</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">insert</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
-    &#125;
-
-    <span class="hljs-meta">@ApiOperation(value = &quot;删除用户信息&quot;, notes = &quot;删除用户信息&quot;)</span>
-    <span class="hljs-meta">@DeleteMapping(&quot;/delete&quot;)</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">delete</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam</span> String id)</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
-    &#125;
-
-    <span class="hljs-meta">@ApiOperation(value = &quot;修改用户信息&quot;, notes = &quot;修改用户信息&quot;)</span>
-    <span class="hljs-meta">@PutMapping(&quot;/update&quot;)</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
-    &#125;
-
-    <span class="hljs-meta">@ApiOperation(value = &quot;查询用户信息&quot;, notes = &quot;查询用户信息&quot;)</span>
-    <span class="hljs-meta">@GetMapping(&quot;/pageInfo&quot;)</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">pageInfo</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;
-    &#125;
-&#125;</code></pre></div>
-
-<ul>
-<li>打开浏览器访问 <a target="_blank" rel="noopener" href="http://localhost:8081/swagger-ui.html">http://localhost:8081/swagger-ui.html</a> ，就可以看见 在controller中定义的方法，参数，返回值等。</li>
-</ul>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ndWxpbWFsbC1nc3kub3NzLWNuLWhhbmd6aG91LmFsaXl1bmNzLmNvbS9vbmVibG9nLzIwMjAwODIwMTUwNDEwNjg0LnBuZw?x-oss-process=image/format,png" srcset="/img/loading.gif"></p>
-<h3 id="2-Knife4j"><a href="#2-Knife4j" class="headerlink" title="2 Knife4j"></a>2 Knife4j</h3><h4 id="2-1-添加依赖"><a href="#2-1-添加依赖" class="headerlink" title="2.1 添加依赖"></a>2.1 添加依赖</h4><blockquote>
-<p>Knife4j 的前身就是swagger。在swagger添加的依赖基础上，新增knife4j自己的依赖。</p>
+<p>在网上搜索资料，发现目前比较流行的就是使用 GitPages + Hexo 来搭建一个静态博客站点。但是一直没找到合适的时间来倒腾。正好这周末休息两天，可以有时间搞搞了。经过筛选我发现一款非常好看、简介的 Hexo主题 - <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs">Fluid</a> 。先贴一张图，看看效果：</p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/back1.png" srcset="/img/loading.gif" alt="theme1"></p>
+<p>网上有很多的建站教程，这里我就记录一下我搭建 GitPages + Hexo 的过程和在建站过程中遇到的问题，做一个记录。</p>
+<p>点击👉查看Fluid 博客样式 <a target="_blank" rel="noopener" href="https://gongshiyong.online/">ifknow-个人博客</a> ，不喜欢可以自己选择其他主题.</p>
+<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><h2 id="1-1-配置环境"><a href="#1-1-配置环境" class="headerlink" title="1.1 配置环境"></a>1.1 配置环境</h2><p>Win10</p>
+<blockquote>
+<p>Git ：<a target="_blank" rel="noopener" href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程参考</a><br>Nodejs：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Nodejs下载地址</a></p>
 </blockquote>
-<div class="hljs"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--整合Knife4j--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.xiaoymin<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-comment">&lt;!--在引用时请在maven中央仓库搜索最新版本号--&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>knife4j-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
+<p>Node.js 安装完成可以设置镜像加速，如果不加速的话，国内下载会超级慢！打开cmd。</p>
+<div class="hljs"><pre><code class="hljs xml">npm config set registry https://registry.npm.taobao.org</code></pre></div>
+
+<p><strong>注意</strong>：Git 和 Nodejs 是必须要安装的，不然没办法下面的操作！</p>
+<h2 id="1-2-注册GitHub账号"><a href="#1-2-注册GitHub账号" class="headerlink" title="1.2 注册GitHub账号"></a>1.2 注册GitHub账号</h2><p>我们要把我们的博客放在 GitHub 上托管，国内访问 GitHub 也是很慢。（可以使用插件或者代理加速GitHub访问）</p>
+<p>有了账号之后新建一个仓库，命名为<code>用户名.github.io</code>。</p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/user1.png" srcset="/img/loading.gif" alt="user1"><br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/resp.png" srcset="/img/loading.gif" alt="resp"></p>
+<blockquote>
+<p>这样你就创建了一个 可以以 <code>用户名.github.io</code>访问的网站了。直接在地址栏中输入，就可以打开，难免会有些慢，后面会介绍我是如何加速的。现在页面只会显示你的readme页面的内容。</p>
+</blockquote>
+<p>继续配置吧，说远了。<br>点击仓库名进入仓库，点击 Setting 进入仓库设置页面，在 Setting 页面下拉到 最下面的 GitHub Pages 设置项。</p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/31-1.png" srcset="/img/loading.gif" alt="31-1"></p>
+<p>到现在为止 博客存放的仓库设置好了。</p>
+<h1 id="2-安装-Hexo"><a href="#2-安装-Hexo" class="headerlink" title="2 安装 Hexo"></a>2 安装 Hexo</h1><p>在电脑本地，任意选择一个位置，创建一个文件夹，用来存放本地博客文件。进入该文件夹内，右键选择 Git Bash Here（安装完 Git 就会出现）。如果你熟悉 Linux 环境的话，Git 的命令控制台就会 很容易，命令都是通用的。</p>
+<ul>
+<li>输入下面命令安装 Hexo</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">npm install hexo-cli -g</code></pre></div>
 
 <ul>
-<li>打开浏览器访问：<a target="_blank" rel="noopener" href="http://localhost:8081/doc.html">http://localhost:8081/doc.html</a> 。</li>
+<li>安装完成后输入下面命令来检验 Hexo 安装的版本</li>
 </ul>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ndWxpbWFsbC1nc3kub3NzLWNuLWhhbmd6aG91LmFsaXl1bmNzLmNvbS9vbmVibG9nLzIwMjAwODIwMTUwNDA3MDUyLnBuZw?x-oss-process=image/format,png" srcset="/img/loading.gif"></p>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h3><p>这两种接口展示我感觉来说，没有什么大的区别，用着合适就可以。</p>
-<p><a href="(https://github.com/ifknow/spring-boot-examples/tree/master/spring-boot-swagger">示例代码-GitHub</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/ifknow/spring-boot-examples/tree/master/spring-boot-swagger">示例代码-Gitee</a></p>
+<div class="hljs"><pre><code class="hljs xml">hexo -v</code></pre></div>
+
+<p>这样就是安装成功了，应该不会安装不成功的。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/QQ%E6%88%AA%E5%9B%BE20200831154334.png" srcset="/img/loading.gif" alt="hexo-v"></p>
+<ul>
+<li><h3 id="初始化-Hexo-网站"><a href="#初始化-Hexo-网站" class="headerlink" title="初始化 Hexo 网站"></a>初始化 Hexo 网站</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo init</code></pre></div>
+
+<p>这个命令就是在该文件夹下初始化一个 Hexo 网站，这个过程会比较慢，也没有任何输出，等待就行。</p>
+<ul>
+<li><h3 id="安装所需依赖"><a href="#安装所需依赖" class="headerlink" title="安装所需依赖"></a>安装所需依赖</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">npm install</code></pre></div>
+
+<p>这样本地的 hexo 就创建完成了，输入下面两个命令本地预览 <a target="_blank" rel="noopener" href="http://localhost:4000/%E3%80%82">http://localhost:4000/。</a></p>
+<div class="hljs"><pre><code class="hljs xml">hexo g # 编译md文件成为html页面
+hexo s # 启动服务器</code></pre></div>
+
+<p>停止 运行快捷键 <code>Ctrl + C</code> ！</p>
+<h1 id="3-本地博客推送到-GitHub"><a href="#3-本地博客推送到-GitHub" class="headerlink" title="3 本地博客推送到 GitHub"></a>3 本地博客推送到 GitHub</h1><p>本地博客可以预览之后，就可以推送到 GitHub 的刚创建的 仓库进行访问了。</p>
+<blockquote>
+<p>这里我就默认你的Git环境已经配置ok了，有问题，参考☞ <a target="_blank" rel="noopener" href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程</a></p>
+</blockquote>
+<p>打开 hexo 安装根目录，用编辑器打开 <code>_config.yml</code>，修改最后的 <code>deploy</code>配置。下面是我的配置，请按需修改。</p>
+<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+  <span class="hljs-attr">repository:</span> <span class="hljs-string">https://github.com/ifknow/ifknow.github.io</span> <span class="hljs-comment"># 你的仓库地址</span>
+  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span> <span class="hljs-comment"># 选择默认master分支</span></code></pre></div>
+
+<ul>
+<li><h3 id="创建一个Test文章"><a href="#创建一个Test文章" class="headerlink" title="创建一个Test文章"></a>创建一个Test文章</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo new Test</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs xml">$ hexo new Test
+INFO  Validating config
+INFO  Created: C:\opensource\blog-post\hexo\source\_posts\Test.md
+</code></pre></div>
+
+<p>然后就会在<code>source/_post/</code>下面生成一个<code>Test.md</code>文件，随便在该文件中输入一些内容，保存。</p>
+<blockquote>
+<p>这就是以后写文章的步骤！<code>hexo new &#39;文章名&#39;</code>。</p>
+</blockquote>
+<ul>
+<li><h3 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo g # 编译md文件-&gt;html
+hexo d # 推送
+</code></pre></div>
+
+<h3 id="推送时遇到的问题？"><a href="#推送时遇到的问题？" class="headerlink" title="推送时遇到的问题？"></a>推送时遇到的问题？</h3><ul>
+<li>1、有时莫名其妙会让你输入用户名和密码，这里的用户名和密码是你的 GitHub 登录名和密码。</li>
+<li>2、github push failed (remote: Permission to userA/repo.git denied to userB？<ul>
+<li>原因：由于你在本地配置 Git已经指定了两个用户。</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/klxh2009/article/details/76019742">解决方法</a></li>
+</ul>
+</li>
+</ul>
+<p>现在你就可以使用 <code>youname.github.io</code>进行访问了。</p>
+<h1 id="4-域名绑定"><a href="#4-域名绑定" class="headerlink" title="4 域名绑定"></a>4 域名绑定</h1><p>Gitpages 支持自定义域名。前提是 你得一个域名，域名购买也很简单，备案也不是很复杂。阿里云或者其他平台都可以。</p>
+<ul>
+<li><strong>1、</strong> gitHub -&gt; Setting -&gt; GitHub Pages 中修改 <code>ustom domain</code> 填写你自己的域名，示例：<code>gongshiyong.online</code>。</li>
+<li><strong>2、</strong> 这里我使用的阿里云域名，进入阿里云域名解析管理平台，其他的类似。添加标注的两条解析记录。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming.png" srcset="/img/loading.gif" alt="yuming"></li>
+</ul>
+<h1 id="5-主题设置"><a href="#5-主题设置" class="headerlink" title="5 主题设置"></a>5 主题设置</h1><h2 id="5-1-下载主题"><a href="#5-1-下载主题" class="headerlink" title="5.1 下载主题"></a>5.1 下载主题</h2><div class="hljs"><pre><code class="hljs xml">git clone https://github.com/fluid-dev/hexo-theme-fluid.git
+</code></pre></div>
+
+<p>完成之后在<code>/themes/</code>目录下出现一个<code>hexo-theme-fluid</code>文件夹。将该文件夹重命名为<code>fluid</code>。<br>点击查看 ☞ <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs">Fluid主题配置官文档</a></p>
+<h2 id="5-2-切换主题"><a href="#5-2-切换主题" class="headerlink" title="5.2 切换主题"></a>5.2 切换主题</h2><p>打开根目录下的<code>_config_yml</code>。检索<code>theme</code>关键字，修改<code>theme</code>的值，为<code>fluid</code>。</p>
+<div class="hljs"><pre><code class="hljs xml">hexo g
+hexo d
+</code></pre></div>
+
+<p>主题切换成功。详细的主题配置，参考官网文档。</p>
+<p>到此，使用 GitPages + Hexo 就可以通过自定义域名访问了。</p>
+<p>但是由于国内访问 Git 过于缓慢，对于博客访问不太友好。访问太慢有时就会造成 连接超时的问题。经过各个方面考虑，我决定使用阿里云的 CDN 加速。</p>
+<h1 id="6-CDN加速"><a href="#6-CDN加速" class="headerlink" title="6 CDN加速"></a>6 CDN加速</h1><blockquote>
+<p>使用阿里云的 CDN 加速的前提是你得有一个 已经备案的域名</p>
+</blockquote>
+<ul>
+<li>点击 ☞：<a target="_blank" rel="noopener" href="https://cdn.console.aliyun.com/overview">CDN管理控制台</a><br>选择左侧【域名管理】-&gt; 添加域名。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming-1.png" srcset="/img/loading.gif" alt="img"></li>
+<li>下一步。方法1：在域名解析中添加如下解析。方法2不做演示了。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming-2.png" srcset="/img/loading.gif" alt="img"></li>
+</ul>
+<ul>
+<li>返回域名管理出现这个就是成功了。</li>
+</ul>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming-3.png" srcset="/img/loading.gif" alt="img"></p>
+<ul>
+<li>点击【监控查询】【用量查询】【资源包】，点击【购买资源包】，购买即可。</li>
+<li>之后写博客就只需要 打开 Git Base 命令框 输入 下面命令就可以新增一篇文章了</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo new &#x27;文章名&#x27; # 文章名不能有空格，创建一篇文章后，就可以使用 markdown 编辑器 写博客
+hexo g
+hexo d
+</code></pre></div>
+
+<p> 感谢您看到这里。</p>
+<blockquote>
+<p>到这里博客搭建和CDN加速的介绍就全部结束了。为了使网站速度访问响应更快，我们可以将博   客中的图片资源存放在OSS 对象存储中。</p>
+<p>就到这里了！晚安~</p>
+</blockquote>
 
             </div>
             <hr>
@@ -468,9 +389,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/SpringBoot/">SpringBoot</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Swagger/">Swagger</a>
+                      <a class="hover-with-bg" href="/categories/GitHub/">GitHub</a>
                     
                   </div>
                 
@@ -478,11 +397,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/SpringBoot/">SpringBoot</a>
+                      <a class="hover-with-bg" href="/tags/GitHub/">GitHub</a>
                     
-                      <a class="hover-with-bg" href="/tags/Swagger/">Swagger</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Knife4j/">Knife4j</a>
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
                     
                   </div>
                 
@@ -495,9 +412,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/29/SpringBoot8/">
+                      <a href="/2020/09/02/linux-install-software/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SpringBoot（八）文件上传案例</span>
+                        <span class="hidden-mobile">Linux环境安装软件</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -505,8 +422,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/29/SpringBoot6/">
-                        <span class="hidden-mobile">SpringBoot（六）banner</span>
+                      <a href="/2020/08/31/git-advance/">
+                        <span class="hidden-mobile">Git（二）分支创建合并</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -792,7 +709,7 @@
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/2020/08/29/SpringBoot7/');
+          var target = decodeURI('/2020/09/01/gitpages-hexo/');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -886,7 +803,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "SpringBoot（七）swagger2&nbsp;",
+        "如何使用GitPages+Hexo搭建博客&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
