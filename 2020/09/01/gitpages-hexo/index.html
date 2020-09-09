@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ifknow">
   <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
-  <title>如何使用GitPages+Hexo搭建博客 - ifknow | 分享技术,享受生活</title>
+  <title>如何使用GitPages+Hexo搭建博客 - ifknow | 分享技术·享受生活</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -252,10 +252,10 @@
 <p>在网上搜索资料，发现目前比较流行的就是使用 GitPages + Hexo 来搭建一个静态博客站点。但是一直没找到合适的时间来倒腾。正好这周末休息两天，可以有时间搞搞了。经过筛选我发现一款非常好看、简介的 Hexo主题 - <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs">Fluid</a> 。先贴一张图，看看效果：</p>
 <p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/back1.png" srcset="/img/loading.gif" alt="theme1"></p>
 <p>网上有很多的建站教程，这里我就记录一下我搭建 GitPages + Hexo 的过程和在建站过程中遇到的问题，做一个记录。</p>
-<p>点击👉查看Fluid 博客样式 <a target="_blank" rel="noopener" href="https://gongshiyong.online/">ifknow-个人博客</a> ，不喜欢可以自己选择其他主题.</p>
+<p>点击👉查看Fluid 博客样式 <a href="https://gongshiyong.online/">ifknow-个人博客</a> ，不喜欢可以自己选择其他主题.</p>
 <h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><h2 id="1-1-配置环境"><a href="#1-1-配置环境" class="headerlink" title="1.1 配置环境"></a>1.1 配置环境</h2><p>Win10</p>
 <blockquote>
-<p>Git ：<a target="_blank" rel="noopener" href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程参考</a><br>Nodejs：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Nodejs下载地址</a></p>
+<p>Git ：<a href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程参考</a><br>Nodejs：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Nodejs下载地址</a></p>
 </blockquote>
 <p>Node.js 安装完成可以设置镜像加速，如果不加速的话，国内下载会超级慢！打开cmd。</p>
 <div class="hljs"><pre><code class="hljs xml">npm config set registry https://registry.npm.taobao.org</code></pre></div>
@@ -300,7 +300,7 @@ hexo s # 启动服务器</code></pre></div>
 <p>停止 运行快捷键 <code>Ctrl + C</code> ！</p>
 <h1 id="3-本地博客推送到-GitHub"><a href="#3-本地博客推送到-GitHub" class="headerlink" title="3 本地博客推送到 GitHub"></a>3 本地博客推送到 GitHub</h1><p>本地博客可以预览之后，就可以推送到 GitHub 的刚创建的 仓库进行访问了。</p>
 <blockquote>
-<p>这里我就默认你的Git环境已经配置ok了，有问题，参考☞ <a target="_blank" rel="noopener" href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程</a></p>
+<p>这里我就默认你的Git环境已经配置ok了，有问题，参考☞ <a href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程</a></p>
 </blockquote>
 <p>打开 hexo 安装根目录，用编辑器打开 <code>_config.yml</code>，修改最后的 <code>deploy</code>配置。下面是我的配置，请按需修改。</p>
 <div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span>
