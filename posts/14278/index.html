@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/logo.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ifknow">
+  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
+  <title>如何使用GitPages+Hexo搭建博客 - ifknow | 分享技术·享受生活</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-dark.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+      href="/">&nbsp;<strong>ifknow</strong>&nbsp;</a>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <i class="iconfont icon-home-fill"></i>
+            首页
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/categories/">
+            <i class="iconfont icon-category-fill"></i>
+            分类
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/archives/">
+            <i class="iconfont icon-archive-fill"></i>
+            归档
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">
+            <i class="iconfont icon-tags-fill"></i>
+            标签
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">
+            <i class="iconfont icon-user-fill"></i>
+            关于
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/links/">
+            <i class="iconfont icon-link-fill"></i>
+            友链
+          </a>
+        </li>
+        
+        
+        
+        <li class="nav-item" id="search-btn">
+          <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+              class="iconfont icon-search"></i>&nbsp;</a>
+        </li>
+        
+        
+        <li class="nav-item" id="color-toggle-btn">
+          <a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark"
+              id="color-toggle-icon"></i>&nbsp;</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/posts.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-09-01 00:30" pubdate>
+      2020-09-01 星期二 12:30:37 凌晨
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">如何使用GitPages+Hexo搭建博客</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020-09-08 星期二 05:26:59 下午
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <p>快来康康如何使用GitHub+Hexo搭建属于自己的站点吧！</p>
+<a id="more"></a>
+
+<h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h1><p>现在博客托管网站也有很多了，我们可以在上面分享自己的生活和对知识的看法，比如CSDN、博客园、掘金等等。个人也就使用过CSDN和掘金，但是使用过一段时间后，就会发现这些博客网站或多或少，不太方便。</p>
+<blockquote>
+<p>所以来说，拥有一个自己的博客站点，是非常有必要的了。</p>
+</blockquote>
+<p>在网上搜索资料，发现目前比较流行的就是使用 GitPages + Hexo 来搭建一个静态博客站点。但是一直没找到合适的时间来倒腾。正好这周末休息两天，可以有时间搞搞了。经过筛选我发现一款非常好看、简介的 Hexo主题 - <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs">Fluid</a> 。先贴一张图，看看效果：</p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/back1.png" srcset="/img/loading.gif" alt="theme1"></p>
+<p>网上有很多的建站教程，这里我就记录一下我搭建 GitPages + Hexo 的过程和在建站过程中遇到的问题，做一个记录。</p>
+<p>点击👉查看Fluid 博客样式 <a href="https://gongshiyong.online/">ifknow-个人博客</a> ，不喜欢可以自己选择其他主题.</p>
+<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><h2 id="1-1-配置环境"><a href="#1-1-配置环境" class="headerlink" title="1.1 配置环境"></a>1.1 配置环境</h2><p>Win10</p>
+<blockquote>
+<p>Git ：<a href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程参考</a><br>Nodejs：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Nodejs下载地址</a></p>
+</blockquote>
+<p>Node.js 安装完成可以设置镜像加速，如果不加速的话，国内下载会超级慢！打开cmd。</p>
+<div class="hljs"><pre><code class="hljs xml">npm config set registry https://registry.npm.taobao.org</code></pre></div>
+
+<p><strong>注意</strong>：Git 和 Nodejs 是必须要安装的，不然没办法下面的操作！</p>
+<h2 id="1-2-注册GitHub账号"><a href="#1-2-注册GitHub账号" class="headerlink" title="1.2 注册GitHub账号"></a>1.2 注册GitHub账号</h2><p>我们要把我们的博客放在 GitHub 上托管，国内访问 GitHub 也是很慢。（可以使用插件或者代理加速GitHub访问）</p>
+<p>有了账号之后新建一个仓库，命名为<code>用户名.github.io</code>。</p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/user1.png" srcset="/img/loading.gif" alt="user1"><br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/resp.png" srcset="/img/loading.gif" alt="resp"></p>
+<blockquote>
+<p>这样你就创建了一个 可以以 <code>用户名.github.io</code>访问的网站了。直接在地址栏中输入，就可以打开，难免会有些慢，后面会介绍我是如何加速的。现在页面只会显示你的readme页面的内容。</p>
+</blockquote>
+<p>继续配置吧，说远了。<br>点击仓库名进入仓库，点击 Setting 进入仓库设置页面，在 Setting 页面下拉到 最下面的 GitHub Pages 设置项。</p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/31-1.png" srcset="/img/loading.gif" alt="31-1"></p>
+<p>到现在为止 博客存放的仓库设置好了。</p>
+<h1 id="2-安装-Hexo"><a href="#2-安装-Hexo" class="headerlink" title="2 安装 Hexo"></a>2 安装 Hexo</h1><p>在电脑本地，任意选择一个位置，创建一个文件夹，用来存放本地博客文件。进入该文件夹内，右键选择 Git Bash Here（安装完 Git 就会出现）。如果你熟悉 Linux 环境的话，Git 的命令控制台就会 很容易，命令都是通用的。</p>
+<ul>
+<li>输入下面命令安装 Hexo</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">npm install hexo-cli -g</code></pre></div>
+
+<ul>
+<li>安装完成后输入下面命令来检验 Hexo 安装的版本</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo -v</code></pre></div>
+
+<p>这样就是安装成功了，应该不会安装不成功的。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/QQ%E6%88%AA%E5%9B%BE20200831154334.png" srcset="/img/loading.gif" alt="hexo-v"></p>
+<ul>
+<li><h3 id="初始化-Hexo-网站"><a href="#初始化-Hexo-网站" class="headerlink" title="初始化 Hexo 网站"></a>初始化 Hexo 网站</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo init</code></pre></div>
+
+<p>这个命令就是在该文件夹下初始化一个 Hexo 网站，这个过程会比较慢，也没有任何输出，等待就行。</p>
+<ul>
+<li><h3 id="安装所需依赖"><a href="#安装所需依赖" class="headerlink" title="安装所需依赖"></a>安装所需依赖</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">npm install</code></pre></div>
+
+<p>这样本地的 hexo 就创建完成了，输入下面两个命令本地预览 <a target="_blank" rel="noopener" href="http://localhost:4000/%E3%80%82">http://localhost:4000/。</a></p>
+<div class="hljs"><pre><code class="hljs xml">hexo g # 编译md文件成为html页面
+hexo s # 启动服务器</code></pre></div>
+
+<p>停止 运行快捷键 <code>Ctrl + C</code> ！</p>
+<h1 id="3-本地博客推送到-GitHub"><a href="#3-本地博客推送到-GitHub" class="headerlink" title="3 本地博客推送到 GitHub"></a>3 本地博客推送到 GitHub</h1><p>本地博客可以预览之后，就可以推送到 GitHub 的刚创建的 仓库进行访问了。</p>
+<blockquote>
+<p>这里我就默认你的Git环境已经配置ok了，有问题，参考☞ <a href="https://gongshiyong.online/2020/08/31/Git%EF%BC%88%E4%B8%80%EF%BC%89%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/">Git安装教程</a></p>
+</blockquote>
+<p>打开 hexo 安装根目录，用编辑器打开 <code>_config.yml</code>，修改最后的 <code>deploy</code>配置。下面是我的配置，请按需修改。</p>
+<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+  <span class="hljs-attr">repository:</span> <span class="hljs-string">https://github.com/ifknow/ifknow.github.io</span> <span class="hljs-comment"># 你的仓库地址</span>
+  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span> <span class="hljs-comment"># 选择默认master分支</span></code></pre></div>
+
+<ul>
+<li><h3 id="创建一个Test文章"><a href="#创建一个Test文章" class="headerlink" title="创建一个Test文章"></a>创建一个Test文章</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo new Test</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs xml">$ hexo new Test
+INFO  Validating config
+INFO  Created: C:\opensource\blog-post\hexo\source\_posts\Test.md
+</code></pre></div>
+
+<p>然后就会在<code>source/_post/</code>下面生成一个<code>Test.md</code>文件，随便在该文件中输入一些内容，保存。</p>
+<blockquote>
+<p>这就是以后写文章的步骤！<code>hexo new &#39;文章名&#39;</code>。</p>
+</blockquote>
+<ul>
+<li><h3 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo g # 编译md文件-&gt;html
+hexo d # 推送
+</code></pre></div>
+
+<h3 id="推送时遇到的问题？"><a href="#推送时遇到的问题？" class="headerlink" title="推送时遇到的问题？"></a>推送时遇到的问题？</h3><ul>
+<li>1、有时莫名其妙会让你输入用户名和密码，这里的用户名和密码是你的 GitHub 登录名和密码。</li>
+<li>2、github push failed (remote: Permission to userA/repo.git denied to userB？<ul>
+<li>原因：由于你在本地配置 Git已经指定了两个用户。</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/klxh2009/article/details/76019742">解决方法</a></li>
+</ul>
+</li>
+</ul>
+<p>现在你就可以使用 <code>youname.github.io</code>进行访问了。</p>
+<h1 id="4-域名绑定"><a href="#4-域名绑定" class="headerlink" title="4 域名绑定"></a>4 域名绑定</h1><p>Gitpages 支持自定义域名。前提是 你得一个域名，域名购买也很简单，备案也不是很复杂。阿里云或者其他平台都可以。</p>
+<ul>
+<li><strong>1、</strong> gitHub -&gt; Setting -&gt; GitHub Pages 中修改 <code>ustom domain</code> 填写你自己的域名，示例：<code>gongshiyong.online</code>。</li>
+<li><strong>2、</strong> 这里我使用的阿里云域名，进入阿里云域名解析管理平台，其他的类似。添加标注的两条解析记录。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming.png" srcset="/img/loading.gif" alt="yuming"></li>
+</ul>
+<h1 id="5-主题设置"><a href="#5-主题设置" class="headerlink" title="5 主题设置"></a>5 主题设置</h1><h2 id="5-1-下载主题"><a href="#5-1-下载主题" class="headerlink" title="5.1 下载主题"></a>5.1 下载主题</h2><div class="hljs"><pre><code class="hljs xml">git clone https://github.com/fluid-dev/hexo-theme-fluid.git
+</code></pre></div>
+
+<p>完成之后在<code>/themes/</code>目录下出现一个<code>hexo-theme-fluid</code>文件夹。将该文件夹重命名为<code>fluid</code>。<br>点击查看 ☞ <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs">Fluid主题配置官文档</a></p>
+<h2 id="5-2-切换主题"><a href="#5-2-切换主题" class="headerlink" title="5.2 切换主题"></a>5.2 切换主题</h2><p>打开根目录下的<code>_config_yml</code>。检索<code>theme</code>关键字，修改<code>theme</code>的值，为<code>fluid</code>。</p>
+<div class="hljs"><pre><code class="hljs xml">hexo g
+hexo d
+</code></pre></div>
+
+<p>主题切换成功。详细的主题配置，参考官网文档。</p>
+<p>到此，使用 GitPages + Hexo 就可以通过自定义域名访问了。</p>
+<p>但是由于国内访问 Git 过于缓慢，对于博客访问不太友好。访问太慢有时就会造成 连接超时的问题。经过各个方面考虑，我决定使用阿里云的 CDN 加速。</p>
+<h1 id="6-CDN加速"><a href="#6-CDN加速" class="headerlink" title="6 CDN加速"></a>6 CDN加速</h1><blockquote>
+<p>使用阿里云的 CDN 加速的前提是你得有一个 已经备案的域名</p>
+</blockquote>
+<ul>
+<li>点击 ☞：<a target="_blank" rel="noopener" href="https://cdn.console.aliyun.com/overview">CDN管理控制台</a><br>选择左侧【域名管理】-&gt; 添加域名。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming-1.png" srcset="/img/loading.gif" alt="img"></li>
+<li>下一步。方法1：在域名解析中添加如下解析。方法2不做演示了。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming-2.png" srcset="/img/loading.gif" alt="img"></li>
+</ul>
+<ul>
+<li>返回域名管理出现这个就是成功了。</li>
+</ul>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/blog-share/yuming-3.png" srcset="/img/loading.gif" alt="img"></p>
+<ul>
+<li>点击【监控查询】【用量查询】【资源包】，点击【购买资源包】，购买即可。</li>
+<li>之后写博客就只需要 打开 Git Base 命令框 输入 下面命令就可以新增一篇文章了</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">hexo new &#x27;文章名&#x27; # 文章名不能有空格，创建一篇文章后，就可以使用 markdown 编辑器 写博客
+hexo g
+hexo d
+</code></pre></div>
+
+<p> 感谢您看到这里。</p>
+<blockquote>
+<p>到这里博客搭建和CDN加速的介绍就全部结束了。为了使网站速度访问响应更快，我们可以将博   客中的图片资源存放在OSS 对象存储中。</p>
+<p>就到这里了！晚安~</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/GitHub/">GitHub</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/GitHub/">GitHub</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/46119/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux环境安装软件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/4600/">
+                        <span class="hidden-mobile">Git（二）分支创建合并</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ifknow/utteranc-blog');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    }
+    waitElementVisible('comments', loadUtterances)
+  </script>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/title/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">豫ICP备20019433号</a>
+    
+  </div>
+
+
+    
+
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+        var now = new Date();
+        function createtime() {
+          var grt = new Date("08/25/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime() + 250);
+          days = (now - grt) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+          }
+          minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+          }
+          seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if (String(snum).length == 1) {
+            snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + dnum + "&nbsp天";
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+        }
+        setInterval("createtime()", 250);
+      </script>
+    </div>
+    <p id="hitokoto">:D 获取中...</p>
+    <script>
+      fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+          const hitokoto = document.getElementById('hitokoto')
+          hitokoto.innerText = data.hitokoto
+        })
+        .catch(console.error)
+    </script>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer>
+  (function () {
+    // 查询存储的记录
+    function getRecord(Counter, target) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({target})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {target, time: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    }
+
+    // 发起自增请求
+    function increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    }
+
+    // 构建自增请求体
+    function buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "time": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    }
+
+    // 校验是否为有效的 UV
+    function validUV() {
+      var key = 'LeanCloud_UV_Flag';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    }
+
+    function addCount(Counter) {
+      var enableIncr = 'true' === 'true' && window.location.hostname !== 'localhost';
+      var getterArr = [];
+      var incrArr = [];
+
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#leancloud-site-pv-container');
+      if (pvCtn || enableIncr) {
+        var pvGetter = getRecord(Counter, 'site-pv').then((record) => {
+          incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-pv');
+          if (ele) {
+            ele.innerText = record.time + 1;
+            if (pvCtn) {
+              pvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#leancloud-site-uv-container');
+      if (uvCtn || enableIncr) {
+        var uvGetter = getRecord(Counter, 'site-uv').then((record) => {
+          var vuv = validUV();
+          vuv && incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-uv');
+          if (ele) {
+            ele.innerText = record.time + (vuv ? 1 : 0);
+            if (uvCtn) {
+              uvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 如果是文章，请求文章的浏览数，并自增
+      if ('true' === 'true') {
+        var viewCtn = document.querySelector('#leancloud-post-views-container');
+        if (viewCtn || enableIncr) {
+          var target = decodeURI('/posts/14278/');
+          var viewGetter = getRecord(Counter, target).then((record) => {
+            incrArr.push(buildIncrement(record.objectId))
+            if (viewCtn) {
+              var ele = document.querySelector('#leancloud-post-views');
+              if (ele) {
+                ele.innerText = (record.time || 0) + 1;
+                viewCtn.style.display = 'inline';
+              }
+            }
+          });
+          getterArr.push(viewGetter);
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && increment(Counter, incrArr);
+        })
+      }
+    }
+
+    var app_id = 'zrFnMoI7L8dVYCUGfmBTmFkG-gzGzoHsz'
+    var app_key = '7h1obI3txkWKjMpE6uzmBpGG'
+    var server_url = 'https://zrfnmoi7.lc-cn-n1-shared.com'
+
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': app_id,
+            'X-LC-Key': app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+
+      addCount(Counter);
+    }
+
+    var api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${ app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(resp => resp.json())
+        .then(({api_server}) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "如何使用GitPages+Hexo搭建博客&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+</body>
+</html>
