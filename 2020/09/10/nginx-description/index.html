@@ -1,0 +1,1012 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/logo.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ifknow">
+  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
+  <title>nginx简介和使用 - ifknow | 分享技术·享受生活</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-dark.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+      href="/">&nbsp;<strong>ifknow</strong>&nbsp;</a>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <i class="iconfont icon-home-fill"></i>
+            首页
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/categories/">
+            <i class="iconfont icon-category-fill"></i>
+            分类
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/archives/">
+            <i class="iconfont icon-archive-fill"></i>
+            归档
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">
+            <i class="iconfont icon-tags-fill"></i>
+            标签
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">
+            <i class="iconfont icon-user-fill"></i>
+            关于
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/links/">
+            <i class="iconfont icon-link-fill"></i>
+            友链
+          </a>
+        </li>
+        
+        
+        
+        <li class="nav-item" id="search-btn">
+          <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+              class="iconfont icon-search"></i>&nbsp;</a>
+        </li>
+        
+        
+        <li class="nav-item" id="color-toggle-btn">
+          <a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark"
+              id="color-toggle-icon"></i>&nbsp;</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/posts.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-09-10 15:20" pubdate>
+      2020-09-10 星期四 03:20:26 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">nginx简介和使用</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020-09-10 星期四 03:25:40 下午
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <blockquote>
+<p>Nginx 的代名词就是 “高负载均衡服务器”。</p>
+<p>官网地址：<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a></p>
+</blockquote>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h1><p>nginx (“engine x”) <strong>是一个高性能的 HTTP 和 反向代理 服务器</strong>，也是一个 <strong>IMAP/POP3/SMTP 代理服务器</strong>。 Nginx 是由 Igor Sysoev 为俄罗斯访问量第二的 Rambler.ru 站点开发的，第一个公开版本0.1.0发布于2004年10月4日。其将源代码以类 BSD 许可证的形式发布，因它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。</p>
+<p>其特点是<strong>占有内存少，并发能力强</strong>，能够支持高达 <strong>50000</strong> 个并发连接响应。这归功于它选择了epoll and kqueue 作为开发模型（socket数量不限制）(Apache采用的 select 开发模型)。它处理请求是异步非阻塞，在高并发下保持低资源低消耗高性能。非常稳定，bug 极少。Apache 使用处理每个连接都需要一个进程，其并发性能不是很好。而Nginx使用<strong>多路复用</strong>的技术，让一 个进程处理多个连接，所以并发性能比较好。</p>
+<p>事实上 nginx 的并发能力确实在同类型的网页服务器中表现较好，中国使用 nginx 网站用户有：新浪、网易、腾讯、京东、淘宝等。</p>
+<h2 id="1-1-优点"><a href="#1-1-优点" class="headerlink" title="1.1 优点"></a>1.1 优点</h2><ul>
+<li>Nginx是一个高性能的HTTP和反向代理服务器</li>
+<li>采用 C 语言编写</li>
+<li>支持的操作系统众多，windows、linux、MacOS X</li>
+<li>安全性高，外界只能访问nginx所在服务器，nginx将请求转发内部服务器。调用后，返回调用的结果</li>
+<li>可实现负载均衡</li>
+<li>Rewrite功能强大</li>
+<li>电商、互联网架构大部分都采用Nginx+Tomcat的架构 </li>
+</ul>
+<h2 id="1-2-nginx-和-Apache、IIS-等比较"><a href="#1-2-nginx-和-Apache、IIS-等比较" class="headerlink" title="1.2 nginx 和 Apache、IIS 等比较"></a>1.2 nginx 和 Apache、IIS 等比较</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-1.png" srcset="/img/loading.gif" alt="nginx-1"></p>
+<p>（图片来源于 <a target="_blank" rel="noopener" href="https://w3techs.com/%EF%BC%89">https://w3techs.com/）</a></p>
+<p>根据 w3techs 公布的数据，Nginx 目前已经在 Web 服务器领域有了一定的地位。在排名前100万的网站中，主流服务器仍为Apache，也有很大一部分使用IIS。</p>
+<p><img src="https://images.gongshiyong.online/blog/9-10/nginx-2.png" srcset="/img/loading.gif" alt="nginx-2"></p>
+<p>这得益于 Nginx 使用了最新的 epoll（Linux 2.6内核）和 kqueue（freebsd）网络 I/O 模型，而 Apache 则使用的是传统的 select 模型。目前 Linux下能够承受高并发访问的 Squid、Memcached 都采用的是epoll网络I/O模型。</p>
+<p>处理大量的连接的读写，Apache 所采用的 select 网络 I/O 模型非常低效。下面用一个比喻来解析 Apache 采用的 select 模型和 Nginx 采用的 epoll 模型进行之间的区别：</p>
+<p>假设你在大学读书，住的宿舍楼有很多间房间，你的朋友要来找你。select 版宿管大妈就会带着你的朋友挨个房间去找，直到找到你为止。而 epoll 版宿管大妈会先记下每位同学的房间号，你的朋友来时，只需告诉你的朋友你住在哪个房间即可，不用亲自带着你的朋友满大楼找人。如果来了 10000 个人，都要找自己住这栋楼的同学时，selec t版和 epoll 版宿管大妈，谁的效率更高，不言自明。同理，在高并发服务器中，轮询 I/O 是最耗时间的操作之一，select 和 epoll 的性能谁的性能更高，同样十分明了。</p>
+<h2 id="1-3-nginx-目录结构"><a href="#1-3-nginx-目录结构" class="headerlink" title="1.3 nginx 目录结构"></a>1.3 nginx 目录结构</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-3.png" srcset="/img/loading.gif" alt="nginx-3"></p>
+<blockquote>
+<p>conf - 配置文件</p>
+<p>contrib - 网友贡献的一些有用脚本</p>
+<p>docs - 源码</p>
+<p>html - nginx 提供的默认 html 页面（index.html、50x.html）</p>
+<p>logs - 日志文件夹</p>
+<p>temp - 临时文件夹</p>
+<p>nginx.exe - 应用程序</p>
+</blockquote>
+<h2 id="1-4-nginx-的启动停止"><a href="#1-4-nginx-的启动停止" class="headerlink" title="1.4 nginx 的启动停止"></a>1.4 nginx 的启动停止</h2><p><font color=red>尽量不使用双击 nginx.exe 来启动，因为可能会多次点击，启动多个，造成奇奇怪怪的问题。<strong>点击一次即可！</strong></font></p>
+<p>启动：</p>
+<div class="hljs"><pre><code class="hljs xml"># 进入 nginx 安装目录
+cd c:/softinstall/nginx-1.18.0
+
+# 启动时，命令框会一闪而过
+start nginx.exe</code></pre></div>
+
+<p>停止：</p>
+<div class="hljs"><pre><code class="hljs xml">nginx.exe -s stop</code></pre></div>
+
+<p>重新加载：</p>
+<div class="hljs"><pre><code class="hljs xml">nginx.exe -s reload</code></pre></div>
+
+<p><strong>注意：Windows下有时停止无效，造成开启太多，手工结束进程。</strong></p>
+<h1 id="2-nginx-的作用"><a href="#2-nginx-的作用" class="headerlink" title="2 nginx 的作用"></a>2 nginx 的作用</h1><h2 id="2-1-提升网络安全"><a href="#2-1-提升网络安全" class="headerlink" title="2.1 提升网络安全"></a>2.1 提升网络安全</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-4.png" srcset="/img/loading.gif" alt="nginx-4"></p>
+<p>通过前置机（也叫踏板机）将内网和外网隔离，用户只能访问前置机，其他的机器是无法直接访问内网中其他服务器资源，必须通过前置机中转，请求重定向才可以。这样保证了网络的安全。</p>
+<h2 id="2-2-流行的-nginx-部署结构"><a href="#2-2-流行的-nginx-部署结构" class="headerlink" title="2.2 流行的 nginx 部署结构"></a>2.2 流行的 nginx 部署结构</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-5.png" srcset="/img/loading.gif" alt="nginx-5"></p>
+<p>先通过一个 nginx 进行转发到2个 nginx 上，然后再通过 nginx 进行负载到多个 tomcat 集群上。这样的结构优点是，防止单个节点压力过重。</p>
+<h2 id="2-3-请求转发"><a href="#2-3-请求转发" class="headerlink" title="2.3 请求转发"></a>2.3 请求转发</h2><p>当用户访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost:80</a> nginx 将这个请求什么也不做，只负责转发到 tomcat 的访问地址 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a> 。</p>
+<div class="hljs"><pre><code class="hljs xml">server &#123;
+    listen       80;
+    server_name  localhost;  
+
+    location / &#123;						#拦截所有的资源
+    proxy_pass   http://127.0.0.1:8080;	#转向 tomcat 的地址
+    &#125;	
+&#125;</code></pre></div>
+
+<h2 id="2-4-动静分离（指向一个目录）"><a href="#2-4-动静分离（指向一个目录）" class="headerlink" title="2.4 动静分离（指向一个目录）"></a>2.4 动静分离（指向一个目录）</h2><p>静态资源：图片、css、js、html（静态资源处理时并发非常高）</p>
+<p>动态资源：asp/aspx、php、jsp</p>
+<p>nginx默认配置：</p>
+<div class="hljs"><pre><code class="hljs xml">location / &#123;
+	#相对路径，配置了一个html目录，我们可以将网站所用到的所有的静态资源从war中移除，放到这个目录下。
+	root   html;
+	#配置的欢迎页面
+	index  index.html index.htm;	
+&#125;</code></pre></div>
+
+<h2 id="2-5-文件服务器（指向一个目录）"><a href="#2-5-文件服务器（指向一个目录）" class="headerlink" title="2.5 文件服务器（指向一个目录）"></a>2.5 文件服务器（指向一个目录）</h2><p>文件服务器： C:\Windows\System32\drivers\etc\hosts</p>
+<div class="hljs"><pre><code class="hljs xml">server &#123;
+    listen       80;
+	# 域名地址，修改hosts文件做一个配置 image.xinlanjian.com 127.0.0.1 
+    server_name  image.ifknow.com;		
+
+    location / &#123;
+	#图片文件所在目录，按日期来分目录：yyyy/mm/dd/uuid.jpg或者当前时间的毫秒数+随机值.jpg
+    root c:\\serverfile;		
+    &#125;
+&#125;</code></pre></div>
+
+<h1 id="3-nginx-负载均衡"><a href="#3-nginx-负载均衡" class="headerlink" title="3 nginx 负载均衡"></a>3 nginx 负载均衡</h1><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-6.png" srcset="/img/loading.gif" alt="nginx-6"></p>
+<h2 id="3-1-轮询"><a href="#3-1-轮询" class="headerlink" title="3.1 轮询"></a>3.1 轮询</h2><p>默认配置，tomcat 有 n 个，请求就被平均分配到这 n 个服务器上，请求次数 % n，平均分配到每个服务器。</p>
+<p>例如：有三个 tomcat！</p>
+<p>修改三个端口，在同一台服务器上启动 3 个 tomcat。修改三个 tomcat <code>webapps/ROOT/index.jsp</code> 文件，分别加上简单区分的标识。当请求 nginx 时，<strong>通过这种方法验证得出默认 nginx 轮询这 3 个 tomcat 的 index.jsp 页面，但顺序不一定是配置的顺序</strong>。</p>
+<ul>
+<li>修改 tomcat 端口号</li>
+</ul>
+<p>第一处：更改运行 port 为其他未使用的端口</p>
+<div class="hljs"><pre><code class="hljs xml"># 修改前 
+<span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">&quot;8080&quot;</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">&quot;HTTP/1.1&quot;</span></span>
+<span class="hljs-tag">               <span class="hljs-attr">connectionTimeout</span>=<span class="hljs-string">&quot;20000&quot;</span></span>
+<span class="hljs-tag">               <span class="hljs-attr">redirectPort</span>=<span class="hljs-string">&quot;8443&quot;</span> /&gt;</span>
+# 修改后
+ <span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">&quot;8081&quot;</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">&quot;HTTP/1.1&quot;</span></span>
+<span class="hljs-tag">               <span class="hljs-attr">connectionTimeout</span>=<span class="hljs-string">&quot;20000&quot;</span></span>
+<span class="hljs-tag">               <span class="hljs-attr">redirectPort</span>=<span class="hljs-string">&quot;8443&quot;</span> /&gt;</span></code></pre></div>
+
+<p>第二处：更改 port 为其他未使用的端口（一般在其前面加 1 / 2 ）</p>
+<div class="hljs"><pre><code class="hljs xml"># 修改前
+<span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">&quot;8009&quot;</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">&quot;AJP/1.3&quot;</span> <span class="hljs-attr">redirectPort</span>=<span class="hljs-string">&quot;8443&quot;</span> /&gt;</span>
+# 修改后
+<span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">&quot;18009&quot;</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">&quot;AJP/1.3&quot;</span> <span class="hljs-attr">redirectPort</span>=<span class="hljs-string">&quot;8443&quot;</span> /&gt;</span></code></pre></div>
+
+<p>第三处：更改 tomcat 关闭 port 为其他未使用的端口</p>
+<div class="hljs"><pre><code class="hljs xml"># 修改前
+<span class="hljs-tag">&lt;<span class="hljs-name">Server</span> <span class="hljs-attr">port</span>=<span class="hljs-string">&quot;8005&quot;</span> <span class="hljs-attr">shutdown</span>=<span class="hljs-string">&quot;SHUTDOWN&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">Listener</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;org.apache.catalina.startup.VersionLoggerListener&quot;</span> /&gt;</span>
+# 修改后
+<span class="hljs-tag">&lt;<span class="hljs-name">Server</span> <span class="hljs-attr">port</span>=<span class="hljs-string">&quot;18005&quot;</span> <span class="hljs-attr">shutdown</span>=<span class="hljs-string">&quot;SHUTDOWN&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">Listener</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;org.apache.catalina.startup.VersionLoggerListener&quot;</span> /&gt;</span>
+</code></pre></div>
+
+<ul>
+<li>更改 tomcat 标识</li>
+</ul>
+<p>打开 <code>webapps/ROOT/index.jsp</code>文件，找到 一下位置，添加 tomcat 8080 or tomcat 8081 or tomcat8082。</p>
+<p>例如：<code>$&#123;pageContext.servletContext.serverInfo&#125; tomcat8080</code>。</p>
+<p>然后重启三个 tomcat。</p>
+<p><img src="https://images.gongshiyong.online/blog/9-10/nginx-7.png" srcset="/img/loading.gif" alt="nginx-7"></p>
+<ul>
+<li><p>nginx 配置</p>
+<p>server.xml 配置</p>
+</li>
+</ul>
+<div class="hljs"><pre><code class="hljs xml">server &#123;
+	listen       80;
+	server_name  localhost;
+    # 拦截所有的资源
+	location / &#123;
+		root   html;
+		index  index.html index.htm;
+        # 引用定义的 upstream
+		proxy_pass http://ifknow_tomcats;
+	&#125;
+&#125;
+upstream ifknow_tomcats &#123;
+	    server 127.0.0.1:8080;
+	    server 127.0.0.1:8081;
+	    server 127.0.0.1:8082;
+&#125;
+</code></pre></div>
+
+<p>启动 nginx， 浏览器访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a> 。</p>
+<p><img src="https://images.gongshiyong.online/blog/9-10/nginx-8.png" srcset="/img/loading.gif" alt="nginx-8"></p>
+<p>轮询方式存在的问题：服务器有性能比较好的，有性能比较差的。新的服务器的配置比旧的服务器强悍很多。CPU核也多，内存也大，硬盘容量也大，速度还快。</p>
+<p>如果还使用轮询的方式，就会造成新服务器资源的浪费，旧的服务器资源压力大。显然资源分配不合理，应该多劳多得。</p>
+<h2 id="3-2-权重"><a href="#3-2-权重" class="headerlink" title="3.2 权重"></a>3.2 权重</h2><p> server.xml 配置</p>
+<div class="hljs"><pre><code class="hljs xml">server &#123;
+	listen       80;
+	server_name  localhost;
+    # 拦截所有的资源
+	location / &#123;
+		root   html;
+		index  index.html index.htm;
+        # 引用定义的 upstream
+		proxy_pass http://ifknow_tomcats;
+	&#125;
+&#125;
+upstream ifknow_tomcats &#123;
+	    server 127.0.0.1:8080 weight=9;  # 访问请求分为10份，这个 tomcat 负责 9 份链接
+	    server 127.0.0.1:8081 weight=1;  # 访问请求分为10份，这个 tomcat 负责 1 份链接
+	    server 127.0.0.1:8082 down;      # 这个 tomcat 暂时不参加负载
+&#125;
+</code></pre></div>
+
+<p>轮询算法并没有考虑每台服务器的处理能力，实际中可能并不是这种情况。由于每台服务器的配置、安装的业务应用等不同，其处理能力会不一样。所以，加权轮询算法的原理就是：根据服务器的不同处理能力，给每个服务器分配不同的权值，使其能够接受相应权值数的服务请求。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/nginx/">nginx</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/nginx/">nginx</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/09/linux-deploy-project-war/">
+                        <span class="hidden-mobile">Linux中以 Jar 包的方式部署SpringBoot项目</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ifknow/utteranc-blog');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    }
+    waitElementVisible('comments', loadUtterances)
+  </script>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/title/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">豫ICP备20019433号</a>
+    
+  </div>
+
+
+    
+
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+        var now = new Date();
+        function createtime() {
+          var grt = new Date("08/25/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime() + 250);
+          days = (now - grt) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+          }
+          minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+          }
+          seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if (String(snum).length == 1) {
+            snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + dnum + "&nbsp天";
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+        }
+        setInterval("createtime()", 250);
+      </script>
+    </div>
+    <p id="hitokoto">:D 获取中...</p>
+    <script>
+      fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+          const hitokoto = document.getElementById('hitokoto')
+          hitokoto.innerText = data.hitokoto
+        })
+        .catch(console.error)
+    </script>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer>
+  (function () {
+    // 查询存储的记录
+    function getRecord(Counter, target) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({target})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {target, time: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    }
+
+    // 发起自增请求
+    function increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    }
+
+    // 构建自增请求体
+    function buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "time": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    }
+
+    // 校验是否为有效的 UV
+    function validUV() {
+      var key = 'LeanCloud_UV_Flag';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    }
+
+    function addCount(Counter) {
+      var enableIncr = 'true' === 'true' && window.location.hostname !== 'localhost';
+      var getterArr = [];
+      var incrArr = [];
+
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#leancloud-site-pv-container');
+      if (pvCtn || enableIncr) {
+        var pvGetter = getRecord(Counter, 'site-pv').then((record) => {
+          incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-pv');
+          if (ele) {
+            ele.innerText = record.time + 1;
+            if (pvCtn) {
+              pvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#leancloud-site-uv-container');
+      if (uvCtn || enableIncr) {
+        var uvGetter = getRecord(Counter, 'site-uv').then((record) => {
+          var vuv = validUV();
+          vuv && incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-uv');
+          if (ele) {
+            ele.innerText = record.time + (vuv ? 1 : 0);
+            if (uvCtn) {
+              uvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 如果是文章，请求文章的浏览数，并自增
+      if ('true' === 'true') {
+        var viewCtn = document.querySelector('#leancloud-post-views-container');
+        if (viewCtn || enableIncr) {
+          var target = decodeURI('/2020/09/10/nginx-description/');
+          var viewGetter = getRecord(Counter, target).then((record) => {
+            incrArr.push(buildIncrement(record.objectId))
+            if (viewCtn) {
+              var ele = document.querySelector('#leancloud-post-views');
+              if (ele) {
+                ele.innerText = (record.time || 0) + 1;
+                viewCtn.style.display = 'inline';
+              }
+            }
+          });
+          getterArr.push(viewGetter);
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && increment(Counter, incrArr);
+        })
+      }
+    }
+
+    var app_id = 'zrFnMoI7L8dVYCUGfmBTmFkG-gzGzoHsz'
+    var app_key = '7h1obI3txkWKjMpE6uzmBpGG'
+    var server_url = 'https://zrfnmoi7.lc-cn-n1-shared.com'
+
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': app_id,
+            'X-LC-Key': app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+
+      addCount(Counter);
+    }
+
+    var api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${ app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(resp => resp.json())
+        .then(({api_server}) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "nginx简介和使用&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+</body>
+</html>
