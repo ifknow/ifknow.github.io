@@ -60,16 +60,6 @@
   <div class="container">
     <a class="navbar-brand"
       href="/">&nbsp;<strong>ifknow</strong>&nbsp;</a>
-    <p id="hitokoto">:D 获取中...</p>
-    <script>
-      fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-          const hitokoto = document.getElementById('hitokoto')
-          hitokoto.innerText = data.hitokoto
-        })
-        .catch(console.error)
-    </script>
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
