@@ -38,9 +38,11 @@
     
     <categories>
       
+      <category>SpringBoot</category>
+      
       <category>Linux</category>
       
-      <category>SpringBoot</category>
+      <category>项目部署</category>
       
     </categories>
     
@@ -50,6 +52,8 @@
       <tag>SpringBoot</tag>
       
       <tag>Linux</tag>
+      
+      <tag>项目部署</tag>
       
     </tags>
     
