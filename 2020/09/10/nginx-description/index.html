@@ -460,30 +460,30 @@ upstream ifknow_tomcats &#123;
               <article class="comments" id="comments">
                 
                 
-  <div id="vcomments"></div>
+  <div id="gitalk-container"></div>
   <script type="text/javascript">
-    function loadValine() {
-      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
-        new Valine({
-          el: "#vcomments",
-          app_id: "zrFnMoI7L8dVYCUGfmBTmFkG-gzGzoHsz",
-          app_key: "7h1obI3txkWKjMpE6uzmBpGG",
-          placeholder: "讲文明，树新风",
-          path: window.location.pathname,
-          avatar: "robohash",
-          meta: ["nick","mail","link"],
-          pageSize: "10",
-          lang: "zh-CN",
-          highlight: true,
-          recordIP: true,
-          serverURLs: "",
+    function loadGitalk() {
+      addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
+      addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: 'c3051c1e9cd6cc171825',
+          clientSecret: 'd7dca2311bd8ace87d703ff317b97b51c656d1e9',
+          repo: 'blog-comments',
+          owner: 'ifknow',
+          admin: ["ifknow"],
+          id: md5(location.pathname),
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 20,
+          pagerDirection: 'last',
+          createIssueManually: true,
+          distractionFreeMode: false
         });
+        gitalk.render('gitalk-container');
       });
     }
-    waitElementVisible('vcomments', loadValine);
+    waitElementVisible('gitalk-container', loadGitalk);
   </script>
-  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
 
 
               </article>
