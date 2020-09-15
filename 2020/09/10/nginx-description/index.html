@@ -235,7 +235,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020-09-10 星期四 03:25:40 下午
+                  本文最后更新于：2020-09-15 星期二 03:57:35 下午
                 
               </p>
             
@@ -256,14 +256,14 @@
 <li>Rewrite功能强大</li>
 <li>电商、互联网架构大部分都采用Nginx+Tomcat的架构 </li>
 </ul>
-<h2 id="1-2-nginx-和-Apache、IIS-等比较"><a href="#1-2-nginx-和-Apache、IIS-等比较" class="headerlink" title="1.2 nginx 和 Apache、IIS 等比较"></a>1.2 nginx 和 Apache、IIS 等比较</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-1.png" srcset="/img/loading.gif" alt="nginx-1"></p>
+<h2 id="1-2-nginx-和-Apache、IIS-等比较"><a href="#1-2-nginx-和-Apache、IIS-等比较" class="headerlink" title="1.2 nginx 和 Apache、IIS 等比较"></a>1.2 nginx 和 Apache、IIS 等比较</h2><p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-1.png" srcset="/img/loading.gif" alt="nginx-1"></p>
 <p>（图片来源于 <a target="_blank" rel="noopener" href="https://w3techs.com/%EF%BC%89">https://w3techs.com/）</a></p>
 <p>根据 w3techs 公布的数据，Nginx 目前已经在 Web 服务器领域有了一定的地位。在排名前100万的网站中，主流服务器仍为Apache，也有很大一部分使用IIS。</p>
-<p><img src="https://images.gongshiyong.online/blog/9-10/nginx-2.png" srcset="/img/loading.gif" alt="nginx-2"></p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-2.png" srcset="/img/loading.gif" alt="nginx-2"></p>
 <p>这得益于 Nginx 使用了最新的 epoll（Linux 2.6内核）和 kqueue（freebsd）网络 I/O 模型，而 Apache 则使用的是传统的 select 模型。目前 Linux下能够承受高并发访问的 Squid、Memcached 都采用的是epoll网络I/O模型。</p>
 <p>处理大量的连接的读写，Apache 所采用的 select 网络 I/O 模型非常低效。下面用一个比喻来解析 Apache 采用的 select 模型和 Nginx 采用的 epoll 模型进行之间的区别：</p>
 <p>假设你在大学读书，住的宿舍楼有很多间房间，你的朋友要来找你。select 版宿管大妈就会带着你的朋友挨个房间去找，直到找到你为止。而 epoll 版宿管大妈会先记下每位同学的房间号，你的朋友来时，只需告诉你的朋友你住在哪个房间即可，不用亲自带着你的朋友满大楼找人。如果来了 10000 个人，都要找自己住这栋楼的同学时，selec t版和 epoll 版宿管大妈，谁的效率更高，不言自明。同理，在高并发服务器中，轮询 I/O 是最耗时间的操作之一，select 和 epoll 的性能谁的性能更高，同样十分明了。</p>
-<h2 id="1-3-nginx-目录结构"><a href="#1-3-nginx-目录结构" class="headerlink" title="1.3 nginx 目录结构"></a>1.3 nginx 目录结构</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-3.png" srcset="/img/loading.gif" alt="nginx-3"></p>
+<h2 id="1-3-nginx-目录结构"><a href="#1-3-nginx-目录结构" class="headerlink" title="1.3 nginx 目录结构"></a>1.3 nginx 目录结构</h2><p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-3.png" srcset="/img/loading.gif" alt="nginx-3"></p>
 <blockquote>
 <p>conf - 配置文件</p>
 <p>contrib - 网友贡献的一些有用脚本</p>
@@ -288,9 +288,9 @@ start nginx.exe</code></pre></div>
 <div class="hljs"><pre><code class="hljs xml">nginx.exe -s reload</code></pre></div>
 
 <p><strong>注意：Windows下有时停止无效，造成开启太多，手工结束进程。</strong></p>
-<h1 id="2-nginx-的作用"><a href="#2-nginx-的作用" class="headerlink" title="2 nginx 的作用"></a>2 nginx 的作用</h1><h2 id="2-1-提升网络安全"><a href="#2-1-提升网络安全" class="headerlink" title="2.1 提升网络安全"></a>2.1 提升网络安全</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-4.png" srcset="/img/loading.gif" alt="nginx-4"></p>
+<h1 id="2-nginx-的作用"><a href="#2-nginx-的作用" class="headerlink" title="2 nginx 的作用"></a>2 nginx 的作用</h1><h2 id="2-1-提升网络安全"><a href="#2-1-提升网络安全" class="headerlink" title="2.1 提升网络安全"></a>2.1 提升网络安全</h2><p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-4.png" srcset="/img/loading.gif" alt="nginx-4"></p>
 <p>通过前置机（也叫踏板机）将内网和外网隔离，用户只能访问前置机，其他的机器是无法直接访问内网中其他服务器资源，必须通过前置机中转，请求重定向才可以。这样保证了网络的安全。</p>
-<h2 id="2-2-流行的-nginx-部署结构"><a href="#2-2-流行的-nginx-部署结构" class="headerlink" title="2.2 流行的 nginx 部署结构"></a>2.2 流行的 nginx 部署结构</h2><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-5.png" srcset="/img/loading.gif" alt="nginx-5"></p>
+<h2 id="2-2-流行的-nginx-部署结构"><a href="#2-2-流行的-nginx-部署结构" class="headerlink" title="2.2 流行的 nginx 部署结构"></a>2.2 流行的 nginx 部署结构</h2><p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-5.png" srcset="/img/loading.gif" alt="nginx-5"></p>
 <p>先通过一个 nginx 进行转发到2个 nginx 上，然后再通过 nginx 进行负载到多个 tomcat 集群上。这样的结构优点是，防止单个节点压力过重。</p>
 <h2 id="2-3-请求转发"><a href="#2-3-请求转发" class="headerlink" title="2.3 请求转发"></a>2.3 请求转发</h2><p>当用户访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost:80</a> nginx 将这个请求什么也不做，只负责转发到 tomcat 的访问地址 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a> 。</p>
 <div class="hljs"><pre><code class="hljs xml">server &#123;
@@ -324,7 +324,7 @@ start nginx.exe</code></pre></div>
     &#125;
 &#125;</code></pre></div>
 
-<h1 id="3-nginx-负载均衡"><a href="#3-nginx-负载均衡" class="headerlink" title="3 nginx 负载均衡"></a>3 nginx 负载均衡</h1><p><img src="https://images.gongshiyong.online/blog/9-10/nginx-6.png" srcset="/img/loading.gif" alt="nginx-6"></p>
+<h1 id="3-nginx-负载均衡"><a href="#3-nginx-负载均衡" class="headerlink" title="3 nginx 负载均衡"></a>3 nginx 负载均衡</h1><p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-6.png" srcset="/img/loading.gif" alt="nginx-6"></p>
 <h2 id="3-1-轮询"><a href="#3-1-轮询" class="headerlink" title="3.1 轮询"></a>3.1 轮询</h2><p>默认配置，tomcat 有 n 个，请求就被平均分配到这 n 个服务器上，请求次数 % n，平均分配到每个服务器。</p>
 <p>例如：有三个 tomcat！</p>
 <p>修改三个端口，在同一台服务器上启动 3 个 tomcat。修改三个 tomcat <code>webapps/ROOT/index.jsp</code> 文件，分别加上简单区分的标识。当请求 nginx 时，<strong>通过这种方法验证得出默认 nginx 轮询这 3 个 tomcat 的 index.jsp 页面，但顺序不一定是配置的顺序</strong>。</p>
@@ -362,7 +362,7 @@ start nginx.exe</code></pre></div>
 <p>打开 <code>webapps/ROOT/index.jsp</code>文件，找到 一下位置，添加 tomcat 8080 or tomcat 8081 or tomcat8082。</p>
 <p>例如：<code>$&#123;pageContext.servletContext.serverInfo&#125; tomcat8080</code>。</p>
 <p>然后重启三个 tomcat。</p>
-<p><img src="https://images.gongshiyong.online/blog/9-10/nginx-7.png" srcset="/img/loading.gif" alt="nginx-7"></p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-7.png" srcset="/img/loading.gif" alt="nginx-7"></p>
 <ul>
 <li><p>nginx 配置</p>
 <p>server.xml 配置</p>
@@ -387,7 +387,7 @@ upstream ifknow_tomcats &#123;
 </code></pre></div>
 
 <p>启动 nginx， 浏览器访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a> 。</p>
-<p><img src="https://images.gongshiyong.online/blog/9-10/nginx-8.png" srcset="/img/loading.gif" alt="nginx-8"></p>
+<p><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/9-10/nginx-8.png" srcset="/img/loading.gif" alt="nginx-8"></p>
 <p>轮询方式存在的问题：服务器有性能比较好的，有性能比较差的。新的服务器的配置比旧的服务器强悍很多。CPU核也多，内存也大，硬盘容量也大，速度还快。</p>
 <p>如果还使用轮询的方式，就会造成新服务器资源的浪费，旧的服务器资源压力大。显然资源分配不合理，应该多劳多得。</p>
 <h2 id="3-2-权重"><a href="#3-2-权重" class="headerlink" title="3.2 权重"></a>3.2 权重</h2><p> server.xml 配置</p>
