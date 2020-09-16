@@ -156,20 +156,6 @@
               
             </span>
 
-	    <span class="h2" id="subtitle">
-		    
-            </span>
-
-	    
-		<br>
-		<span class="h2" id="hitokoto">
-		    
-		</span>
-		
-
-		
-		</div>
-
             
           </div>
 
@@ -595,26 +581,22 @@
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    function typing(id, title){
-        var typed = new Typed('#' + id, {
-            strings: [
-              '  ',
-              title + "&nbsp;",
-            ],
-            cursorChar: "_",
-            typeSpeed: 50,
-            loop: false,
-        });
-        typed.stop();
-        $(document).ready(function () {
-            $(".typed-cursor").addClass("h2");
-            typed.start();
-        });
-    }
-    
-        typing("subtitle", "分类 - SpringBoot")
-    
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "分类 - SpringBoot&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
   </script>
+
 
 
 

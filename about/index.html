@@ -168,20 +168,6 @@
               
             </span>
 
-	    <span class="h2" id="subtitle">
-		    
-            </span>
-
-	    
-		<br>
-		<span class="h2" id="hitokoto">
-		    
-		</span>
-		
-
-		
-		</div>
-
             
           </div>
 
@@ -587,26 +573,22 @@
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    function typing(id, title){
-        var typed = new Typed('#' + id, {
-            strings: [
-              '  ',
-              title + "&nbsp;",
-            ],
-            cursorChar: "_",
-            typeSpeed: 50,
-            loop: false,
-        });
-        typed.stop();
-        $(document).ready(function () {
-            $(".typed-cursor").addClass("h2");
-            typed.start();
-        });
-    }
-    
-        typing("subtitle", "关于我")
-    
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "关于我&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
   </script>
+
 
 
   <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
