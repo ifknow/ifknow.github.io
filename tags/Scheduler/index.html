@@ -564,12 +564,7 @@
         });
     }
     
-        fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-           typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>')
-        })
-        .catch(console.error)
+        typing("subtitle", "标签 - Scheduler")
     
   </script>
 
