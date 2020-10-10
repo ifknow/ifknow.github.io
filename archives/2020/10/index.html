@@ -189,73 +189,7 @@
       <time style="float: right;">10-10</time>
     </a>
   
-    
-    <a href="/2020/09/10/nginx-description/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">nginx简介和使用</span>
-      <time style="float: right;">09-10</time>
-    </a>
-  
-    
-    <a href="/2020/09/09/linux-deploy-project-war/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux中以 Jar 包的方式部署SpringBoot项目</span>
-      <time style="float: right;">09-09</time>
-    </a>
-  
-    
-    <a href="/2020/09/09/redis-interview/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Redis面试全攻略、面试题大集合</span>
-      <time style="float: right;">09-09</time>
-    </a>
-  
-    
-    <a href="/2020/09/08/docker-deploy-proejct/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">docker部署项目（jar包和war包）</span>
-      <time style="float: right;">09-08</time>
-    </a>
-  
-    
-    <a href="/2020/09/04/vagrant-install-linux/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">使用vagrant安装Linux并使用docker安装常用软件</span>
-      <time style="float: right;">09-04</time>
-    </a>
-  
-    
-    <a href="/2020/09/02/Java8-feature/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">java8新特性</span>
-      <time style="float: right;">09-02</time>
-    </a>
-  
-    
-    <a href="/2020/09/02/linux-install-software/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux环境安装软件</span>
-      <time style="float: right;">09-02</time>
-    </a>
-  
-    
-    <a href="/2020/09/01/gitpages-hexo/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">如何使用GitPages+Hexo搭建博客</span>
-      <time style="float: right;">09-01</time>
-    </a>
-  
-    
-    <a href="/2020/08/31/git-advance/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Git（二）分支创建合并</span>
-      <time style="float: right;">08-31</time>
-    </a>
-  
 </div>
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -533,7 +467,7 @@
       if ('false' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/archives/index.html');
+          var target = decodeURI('/archives/2020/10/index.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {

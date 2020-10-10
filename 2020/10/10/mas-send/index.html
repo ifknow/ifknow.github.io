@@ -1,0 +1,1322 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/logo.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ifknow">
+  <meta name="keywords" content="SpringBoot,SpringCloud,MyBatis,Nginx,Linux,Java,JavaWeb,">
+  <title>mas-send - ifknow | 分享技术·享受生活</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-dark.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+      href="/">&nbsp;<strong>ifknow</strong>&nbsp;</a>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <i class="iconfont icon-home-fill"></i>
+            首页
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/categories/">
+            <i class="iconfont icon-category-fill"></i>
+            分类
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/archives/">
+            <i class="iconfont icon-archive-fill"></i>
+            归档
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/tags/">
+            <i class="iconfont icon-tags-fill"></i>
+            标签
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">
+            <i class="iconfont icon-user-fill"></i>
+            关于
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/links/">
+            <i class="iconfont icon-link-fill"></i>
+            友链
+          </a>
+        </li>
+        
+        
+        
+        <li class="nav-item" id="search-btn">
+          <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+              class="iconfont icon-search"></i>&nbsp;</a>
+        </li>
+        
+        
+        <li class="nav-item" id="color-toggle-btn">
+          <a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark"
+              id="color-toggle-icon"></i>&nbsp;</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/blog/posts.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-10-10 16:12" pubdate>
+      2020-10-10 星期六 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      40
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">mas-send</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020-10-10 星期六 下午
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <blockquote>
+<p>最近由于业务需求，需要将原先的阿里元短信功能修改成中国移动的Mas。经过几天的研究接口文档，最终实现了：将移动的Mas的普通短信功能打成一个 jar 包，运行在服务器上，实现在业务代码中调用接口中的接口，发送短信的功能。</p>
+</blockquote>
+<h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h1><p>要使用中国移动的Mas短信功能，就要先了解接口文档（本案例使用HTTP的方式）。<br>浏览器打开：<a target="_blank" rel="noopener" href="http://mas.10086.cn/login">http://mas.10086.cn/login</a> ，下载相关接口文档和案例。<br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/2020-10-10/0.png" srcset="/img/loading.gif" alt="0"><br><img src="https://gulimall-gsy.oss-cn-hangzhou.aliyuncs.com/2020-10-10/1.png" srcset="/img/loading.gif" alt="1"></p>
+<p>这里我使用的是普通短信功能，由于账号未开通模板短信功能。暂不进行说明（与普通短信差不多）。</p>
+<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1 准备工作"></a>1 准备工作</h1><h2 id="1-1-引入移动Mas-jar包"><a href="#1-1-引入移动Mas-jar包" class="headerlink" title="1.1 引入移动Mas jar包"></a>1.1 引入移动Mas jar包</h2><div class="hljs"><pre><code class="hljs xml">mvn install:install-file  -DgroupId=com.masmgc -DartifactId=masmgc-sdk -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=C:\masmgc.sdk.sms-0.0.1-SNAPSHOT.jar
+
+mvn install:install-file  -DgroupId=com.masmgc -DartifactId=mmasmgc-sdk-mms -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=C:\masmgc.sdk.mms-0.0.1-SNAPSHOT.jar
+</code></pre></div>
+<h2 id="1-2-引入依赖"><a href="#1-2-引入依赖" class="headerlink" title="1.2 引入依赖"></a>1.2 引入依赖</h2><blockquote>
+<p>使用SpringBoot初始化一个Maven项目，加入以下依赖：</p>
+</blockquote>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--web模块--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-comment">&lt;!--测试--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.junit.vintage<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit-vintage-engine<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-comment">&lt;!--移动短信--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.masmgc<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>masmgc-sdk<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.masmgc<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>masmgc-sdk-mms<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.18.12<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div>
+<h1 id="2-完成短信发送功能"><a href="#2-完成短信发送功能" class="headerlink" title="2 完成短信发送功能"></a>2 完成短信发送功能</h1><h2 id="2-1-编写普通短信发送Service"><a href="#2-1-编写普通短信发送Service" class="headerlink" title="2.1 编写普通短信发送Service"></a>2.1 编写普通短信发送Service</h2><ul>
+<li><h3 id="请求Entity"><a href="#请求Entity" class="headerlink" title="请求Entity"></a>请求Entity</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.pojo;
+
+<span class="hljs-keyword">import</span> lombok.Data;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: GongShiYong &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@date</span>: 2020/10/9  15:05 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: NO Description</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Data</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SendReq</span> </span>&#123;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 集团客户名称</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String ecName;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 用户名</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String apId;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 密码</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String secretKey;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 手机号码逗号分隔。(如“18137282928,18137282922,18137282923”)</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String mobiles;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 发送短信内容</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String content;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 网关签名编码，必填，签名编码在中国移动集团开通帐号后分配，可以在云MAS网页端管理子系统-SMS接口管理功能中下载。</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String sign;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 扩展码，根据向移动公司申请的通道填写，如果申请的精确匹配通道，则填写空字符串(&quot;&quot;)，否则添加移动公司允许的扩展码。</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String addSerial;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * API输入参数签名结果，签名算法：将ecName，apId，secretKey，mobiles，content ，sign，addSerial按照顺序拼接，然后通过md5(32位小写)计算后得出的值。</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String mac;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 参数</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String params;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 模板id</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String templateId;
+&#125;</code></pre></div></li>
+<li><h3 id="响应Entity"><a href="#响应Entity" class="headerlink" title="响应Entity"></a>响应Entity</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.pojo;
+
+<span class="hljs-keyword">import</span> lombok.Data;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: GongShiYong &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@date</span>: 2020/10/9  15:11 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: NO Description</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Data</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SendRes</span> </span>&#123;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 响应状态码</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String rspcod;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 消息批次号，由云MAS平台生成，用于验证短信提交报告和状态报告的一致性（取值msgGroup）注:如果数据验证不通过msgGroup为空</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> String msgGroup;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 数据校验结果</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> success;
+
+&#125;</code></pre></div></li>
+<li><h3 id="Md5工具类"><a href="#Md5工具类" class="headerlink" title="Md5工具类"></a>Md5工具类</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.utils;
+
+<span class="hljs-keyword">import</span> org.apache.commons.codec.binary.Base64;
+
+<span class="hljs-keyword">import</span> javax.crypto.Mac;
+<span class="hljs-keyword">import</span> javax.crypto.spec.SecretKeySpec;
+<span class="hljs-keyword">import</span> java.security.MessageDigest;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: GongShiYong &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@date</span>: 2020/10/10  15:11 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: Md5 加密工具类</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Md5Util</span> </span>&#123;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">char</span> hexDigits[] = &#123;<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-string">&#x27;7&#x27;</span>,
+            <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-string">&#x27;9&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;f&#x27;</span>&#125;;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 生成MD5码</span>
+<span class="hljs-comment">     *</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> plainText 要加密的字符串</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> md5值</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">MD5</span><span class="hljs-params">(String plainText)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">byte</span>[] strTemp = plainText.getBytes(<span class="hljs-string">&quot;UTF-8&quot;</span>);
+            MessageDigest mdTemp = MessageDigest.getInstance(<span class="hljs-string">&quot;MD5&quot;</span>);
+            mdTemp.update(strTemp);
+            <span class="hljs-keyword">byte</span>[] md = mdTemp.digest();
+            <span class="hljs-keyword">int</span> j = md.length;
+            <span class="hljs-keyword">char</span> str[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[j * <span class="hljs-number">2</span>];
+            <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; j; i++) &#123;
+                <span class="hljs-keyword">byte</span> byte0 = md[i];
+                str[k++] = hexDigits[byte0 &gt;&gt;&gt; <span class="hljs-number">4</span> &amp; <span class="hljs-number">0xf</span>];
+                str[k++] = hexDigits[byte0 &amp; <span class="hljs-number">0xf</span>];
+            &#125;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String(str);
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        &#125;
+    &#125;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 生成MD5码</span>
+<span class="hljs-comment">     *</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> plainText 要加密的字符串</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> md5值</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">MD5</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] plainText)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">byte</span>[] strTemp = plainText;
+            MessageDigest mdTemp = MessageDigest.getInstance(<span class="hljs-string">&quot;MD5&quot;</span>);
+            mdTemp.update(strTemp);
+            <span class="hljs-keyword">byte</span>[] md = mdTemp.digest();
+            <span class="hljs-keyword">int</span> j = md.length;
+            <span class="hljs-keyword">char</span> str[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[j * <span class="hljs-number">2</span>];
+            <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; j; i++) &#123;
+                <span class="hljs-keyword">byte</span> byte0 = md[i];
+                str[k++] = hexDigits[byte0 &gt;&gt;&gt; <span class="hljs-number">4</span> &amp; <span class="hljs-number">0xf</span>];
+                str[k++] = hexDigits[byte0 &amp; <span class="hljs-number">0xf</span>];
+            &#125;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String(str);
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        &#125;
+    &#125;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 先进行HmacSHA1转码再进行Base64编码</span>
+<span class="hljs-comment">     *</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> data 要SHA1的串</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> key  秘钥</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> Exception</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">HmacSHA1ToBase64</span><span class="hljs-params">(String data, String key)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        SecretKeySpec signingKey = <span class="hljs-keyword">new</span> SecretKeySpec(key.getBytes(), <span class="hljs-string">&quot;HmacSHA1&quot;</span>);
+        Mac mac = Mac.getInstance(<span class="hljs-string">&quot;HmacSHA1&quot;</span>);
+        mac.init(signingKey);
+        <span class="hljs-keyword">byte</span>[] rawHmac = mac.doFinal(data.getBytes());
+        <span class="hljs-keyword">return</span> Base64.encodeBase64String(rawHmac);
+    &#125;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 校验MD5码</span>
+<span class="hljs-comment">     *</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> text 要校验的字符串</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> md5  md5值</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 校验结果</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">valid</span><span class="hljs-params">(String text, String md5)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> md5.equals(MD5(text)) || md5.equals(MD5(text).toUpperCase());
+    &#125;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> params</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">MD5</span><span class="hljs-params">(String... params)</span> </span>&#123;
+        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+        <span class="hljs-keyword">for</span> (String param : params) &#123;
+            sb.append(param);
+        &#125;
+        <span class="hljs-keyword">return</span> MD5(sb.toString());
+    &#125;
+&#125;</code></pre></div></li>
+<li><h3 id="短信发送Service"><a href="#短信发送Service" class="headerlink" title="短信发送Service"></a>短信发送Service</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.service;
+
+<span class="hljs-keyword">import</span> com.alibaba.fastjson.JSON;
+<span class="hljs-keyword">import</span> com.ifknow.pojo.SendReq;
+<span class="hljs-keyword">import</span> com.ifknow.pojo.SendRes;
+<span class="hljs-keyword">import</span> com.ifknow.utils.Md5Util;
+<span class="hljs-keyword">import</span> org.apache.commons.codec.binary.Base64;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Component;
+
+<span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
+<span class="hljs-keyword">import</span> java.net.URL;
+<span class="hljs-keyword">import</span> java.net.URLConnection;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: GongShiYong &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@date</span>: 2020/10/9  15:01 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 普通短信发送 一对一</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SMSService</span> </span>&#123;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 登录名</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String apId = <span class="hljs-string">&quot;apId&quot;</span>;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 登录密码</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String secretKey = <span class="hljs-string">&quot;secretKey&quot;</span>;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 集团名称</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String ecName = <span class="hljs-string">&quot;ecName&quot;</span>;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 网关签名编码</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String sign = <span class="hljs-string">&quot;sign&quot;</span>;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 拓展码 填空</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String addSerial = <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 请求url 该接口为模板短信</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String url = <span class="hljs-string">&quot;http://112.35.1.155:1992/sms/norsubmit&quot;</span>;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SMSService.class);
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 多用户发送短信信息</span>
+<span class="hljs-comment">     *</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> mobiles 手机号码逗号分隔</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> content 短信内容</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 返回1表示成功，0表示失败</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sendMsg</span><span class="hljs-params">(String mobiles, String content)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+        <span class="hljs-comment">//Calendar calendar = Calendar.getInstance();</span>
+        <span class="hljs-comment">//SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+        <span class="hljs-comment">//String nowDatestr = sdf.format(calendar.getTimeInMillis());</span>
+        <span class="hljs-comment">//短信内容后跟个日期时间（可有可无），需求要求</span>
+        <span class="hljs-comment">//content += nowDatestr;</span>
+
+        SendReq sendReq = <span class="hljs-keyword">new</span> SendReq();
+        sendReq.setApId(apId);
+        sendReq.setEcName(ecName);
+        sendReq.setSecretKey(secretKey);
+        sendReq.setContent(content);
+        sendReq.setMobiles(mobiles);
+        sendReq.setAddSerial(addSerial);
+        sendReq.setSign(sign);
+
+        StringBuffer stringBuffer = <span class="hljs-keyword">new</span> StringBuffer();
+        stringBuffer.append(sendReq.getEcName());
+        stringBuffer.append(sendReq.getApId());
+        stringBuffer.append(sendReq.getSecretKey());
+        stringBuffer.append(sendReq.getMobiles());
+        stringBuffer.append(sendReq.getContent());
+        stringBuffer.append(sendReq.getSign());
+        stringBuffer.append(sendReq.getAddSerial());
+
+        sendReq.setMac(Md5Util.MD5(stringBuffer.toString()).toLowerCase());
+
+        String reqText = JSON.toJSONString(sendReq);
+
+        String encode = Base64.encodeBase64String(reqText.getBytes(<span class="hljs-string">&quot;UTF-8&quot;</span>));
+
+        String resStr = sendPost(url, encode);
+
+        logger.info(<span class="hljs-string">&quot;发送短信结果：&quot;</span> + resStr);
+
+        SendRes sendRes = JSON.parseObject(resStr, SendRes.class);
+
+        <span class="hljs-keyword">if</span> (sendRes.isSuccess() &amp;&amp; !<span class="hljs-string">&quot;&quot;</span>.equals(sendRes.getMsgGroup()) &amp;&amp; <span class="hljs-string">&quot;success&quot;</span>.equals(sendRes.getRspcod())) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125;
+    &#125;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 向指定 URL 发送POST方法的请求</span>
+<span class="hljs-comment">     *</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> url   发送请求的 URL</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> param 请求参数</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 所代表远程资源的响应结果</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sendPost</span><span class="hljs-params">(String url, String param)</span> </span>&#123;
+        OutputStreamWriter out = <span class="hljs-keyword">null</span>;
+
+        BufferedReader in = <span class="hljs-keyword">null</span>;
+        String result = <span class="hljs-string">&quot;&quot;</span>;
+        <span class="hljs-keyword">try</span> &#123;
+            URL realUrl = <span class="hljs-keyword">new</span> URL(url);
+            URLConnection conn = realUrl.openConnection();
+            conn.setRequestProperty(<span class="hljs-string">&quot;accept&quot;</span>, <span class="hljs-string">&quot;*/*&quot;</span>);
+            conn.setRequestProperty(<span class="hljs-string">&quot;contentType&quot;</span>, <span class="hljs-string">&quot;utf-8&quot;</span>);
+            conn.setRequestProperty(<span class="hljs-string">&quot;connection&quot;</span>, <span class="hljs-string">&quot;Keep-Alive&quot;</span>);
+            conn.setRequestProperty(<span class="hljs-string">&quot;user-agent&quot;</span>, <span class="hljs-string">&quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)&quot;</span>);
+            conn.setDoOutput(<span class="hljs-keyword">true</span>);
+            conn.setDoInput(<span class="hljs-keyword">true</span>);
+
+            out = <span class="hljs-keyword">new</span> OutputStreamWriter(conn.getOutputStream());
+            out.write(param);
+            out.flush();
+
+            in = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(conn.getInputStream()));
+            String line;
+            <span class="hljs-keyword">while</span> ((line = in.readLine()) != <span class="hljs-keyword">null</span>) &#123;
+                result += <span class="hljs-string">&quot;\n&quot;</span> + line;
+            &#125;
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            e.printStackTrace();
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            <span class="hljs-keyword">try</span> &#123;
+                <span class="hljs-keyword">if</span> (out != <span class="hljs-keyword">null</span>) &#123;
+                    out.close();
+                &#125;
+                <span class="hljs-keyword">if</span> (in != <span class="hljs-keyword">null</span>) &#123;
+                    in.close();
+                &#125;
+            &#125; <span class="hljs-keyword">catch</span> (IOException ex) &#123;
+                ex.printStackTrace();
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> result;
+    &#125;
+&#125;</code></pre></div>
+<blockquote>
+<p><font color=red>注意：需要将代码中的 apId、secretKey等变量进行修改。</font></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>我们的需求是将该短信服务做成一个jar包，进行部署使用，这就要求暴露出一个向外的接口，仅仅传手机号和发送的短信内容即可。</p>
+</blockquote>
+<ul>
+<li><h3 id="编写controller，暴露接口"><a href="#编写controller，暴露接口" class="headerlink" title="编写controller，暴露接口"></a>编写controller，暴露接口</h3></li>
+</ul>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.controller;
+
+<span class="hljs-keyword">import</span> com.ifknow.service.SMSService;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.PostMapping;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: GongShiYong &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@date</span>: 2020/10/10  10:20 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 移动 mas 发送 【普通短信】</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HttpMasSendController</span> </span>&#123;
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> SMSService smsService;
+
+    <span class="hljs-keyword">private</span> Logger logger = LoggerFactory.getLogger(getClass());
+
+    <span class="hljs-meta">@PostMapping(&quot;/sendMas&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">sendMas</span><span class="hljs-params">(String mobile, String msg)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">int</span> result = smsService.sendMsg(mobile, msg);
+            System.out.println(<span class="hljs-string">&quot;短信发送成功===&quot;</span> + result);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+            logger.error(<span class="hljs-string">&quot;短信发送失败===&quot;</span> + mobile + msg);
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    &#125;
+&#125;</code></pre></div>
+<blockquote>
+<p>经过本地接口测试 <a target="_blank" rel="noopener" href="http://localhost:8088/sendMas?mobile=123&amp;msg=123">http://localhost:8088/sendMas?mobile=123&amp;msg=123</a><br>使用PostMan或者其他接口测试工具，进行调试。</p>
+</blockquote>
+<h1 id="3-打包部署"><a href="#3-打包部署" class="headerlink" title="3 打包部署"></a>3 打包部署</h1><p>打开控制台</p>
+<div class="hljs"><pre><code class="hljs xml">// 清理
+mvn clean
+// 打包
+mvn install / mvn package</code></pre></div>
+<p><strong>将最终生成的 jar 包，传到服务器上，并放开服务器相关端口。</strong></p>
+<h1 id="4-在项目中调用"><a href="#4-在项目中调用" class="headerlink" title="4 在项目中调用"></a>4 在项目中调用</h1><ul>
+<li>编写远程调用工具类</li>
+</ul>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.ifknow.utils;
+
+<span class="hljs-keyword">import</span> org.apache.http.HttpResponse;
+<span class="hljs-keyword">import</span> org.apache.http.client.config.RequestConfig;
+<span class="hljs-keyword">import</span> org.apache.http.client.methods.HttpPost;
+<span class="hljs-keyword">import</span> org.apache.http.impl.client.CloseableHttpClient;
+<span class="hljs-keyword">import</span> org.apache.http.impl.client.HttpClients;
+<span class="hljs-keyword">import</span> org.apache.http.util.EntityUtils;
+<span class="hljs-keyword">import</span> org.slf4j.Logger;
+<span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;
+
+<span class="hljs-keyword">import</span> java.net.SocketTimeoutException;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: GongShiYong &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@date</span>: 2020/10/10  13:53 &lt;br&gt;</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 使用移动 Mas 发送普通短信的 工具类</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MasSendUtil</span> </span>&#123;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(MasSendUtil.class);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">MasSend</span><span class="hljs-params">(String mobile, String msg)</span> </span>&#123;
+
+        String url = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> &#123;
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            RequestConfig requestConfig =
+                    RequestConfig.custom().setSocketTimeout(<span class="hljs-number">300</span> * <span class="hljs-number">1000</span>).setConnectTimeout(<span class="hljs-number">300</span> * <span class="hljs-number">1000</span>).build();
+            url = <span class="hljs-string">&quot;http://192.168.1.104:8088/sendMas?mobile=&quot;</span> + mobile + <span class="hljs-string">&quot;&amp;msg=&quot;</span> + msg;
+            HttpPost post = <span class="hljs-keyword">new</span> HttpPost(url);
+            post.setConfig(requestConfig);
+            post.setHeader(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/json;charset=utf-8&quot;</span>);
+            HttpResponse response = httpClient.execute(post);
+            String content = EntityUtils.toString(response.getEntity());
+            System.out.println(content);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        &#125; <span class="hljs-keyword">catch</span> (SocketTimeoutException e) &#123;
+            logger.error(<span class="hljs-string">&quot;调用sendMas接口超时，超时时间：&quot;</span> + <span class="hljs-number">300</span> + <span class="hljs-string">&quot;秒，url：&quot;</span> + url, e);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            logger.error(<span class="hljs-string">&quot;调用sendMas接口失败，url：&quot;</span> + url, e);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<blockquote>
+<p>工具类的使用很简单，只需要传一个手机号和要发送的内容。</p>
+</blockquote>
+<p>到这里，中国移动云Mas发送普通短信就完成了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BA%91MAS/">云MAS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%91MAS/">云MAS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/10/nginx-description/">
+                        <span class="hidden-mobile">nginx简介和使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="lv-container" data-id="city" data-uid="MTAyMC81MTU2OS8yODA1MA==">
+    <script type="text/javascript">
+      function loadLivere() {
+        addScript('https://cdn-city.livere.com/js/embed.dist.js');
+      }
+      waitElementVisible('lv-container', loadLivere);
+    </script>
+    <noscript>为正常使用来必力评论功能请允许 JavaScript 运行</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">豫ICP备20019433号</a>
+    
+  </div>
+
+
+    
+
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+        var now = new Date();
+        function createtime() {
+          var grt = new Date("08/25/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime() + 250);
+          days = (now - grt) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+          }
+          minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+          }
+          seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if (String(snum).length == 1) {
+            snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + dnum + "&nbsp天";
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+        }
+        setInterval("createtime()", 250);
+      </script>
+    </div>
+    <p id="hitokoto" style="font-size:0.85rem">:D 获取中...</p>
+    <script>
+      fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+          const hitokoto = document.getElementById('hitokoto')
+          hitokoto.innerText = data.hitokoto
+        })
+        .catch(console.error)
+    </script>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer>
+  (function () {
+    // 查询存储的记录
+    function getRecord(Counter, target) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({target})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {target, time: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    }
+
+    // 发起自增请求
+    function increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    }
+
+    // 构建自增请求体
+    function buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "time": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    }
+
+    // 校验是否为有效的 UV
+    function validUV() {
+      var key = 'LeanCloud_UV_Flag';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    }
+
+    function addCount(Counter) {
+      var enableIncr = 'true' === 'true' && window.location.hostname !== 'localhost';
+      var getterArr = [];
+      var incrArr = [];
+
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#leancloud-site-pv-container');
+      if (pvCtn || enableIncr) {
+        var pvGetter = getRecord(Counter, 'site-pv').then((record) => {
+          incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-pv');
+          if (ele) {
+            ele.innerText = record.time + 1;
+            if (pvCtn) {
+              pvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#leancloud-site-uv-container');
+      if (uvCtn || enableIncr) {
+        var uvGetter = getRecord(Counter, 'site-uv').then((record) => {
+          var vuv = validUV();
+          vuv && incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-uv');
+          if (ele) {
+            ele.innerText = record.time + (vuv ? 1 : 0);
+            if (uvCtn) {
+              uvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 如果是文章，请求文章的浏览数，并自增
+      if ('true' === 'true') {
+        var viewCtn = document.querySelector('#leancloud-post-views-container');
+        if (viewCtn || enableIncr) {
+          var target = decodeURI('/2020/10/10/mas-send/');
+          var viewGetter = getRecord(Counter, target).then((record) => {
+            incrArr.push(buildIncrement(record.objectId))
+            if (viewCtn) {
+              var ele = document.querySelector('#leancloud-post-views');
+              if (ele) {
+                ele.innerText = (record.time || 0) + 1;
+                viewCtn.style.display = 'inline';
+              }
+            }
+          });
+          getterArr.push(viewGetter);
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && increment(Counter, incrArr);
+        })
+      }
+    }
+
+    var app_id = 'zrFnMoI7L8dVYCUGfmBTmFkG-gzGzoHsz'
+    var app_key = '7h1obI3txkWKjMpE6uzmBpGG'
+    var server_url = 'https://zrfnmoi7.lc-cn-n1-shared.com'
+
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': app_id,
+            'X-LC-Key': app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+
+      addCount(Counter);
+    }
+
+    var api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${ app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(resp => resp.json())
+        .then(({api_server}) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 6,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "mas-send&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "left",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+</body>
+</html>
