@@ -90,20 +90,20 @@
     
     <categories>
       
-      <category>SpringBoot</category>
-      
       <category>Linux</category>
       
       <category>项目部署</category>
+      
+      <category>SpringBoot</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>SpringBoot</tag>
-      
       <tag>Linux</tag>
+      
+      <tag>SpringBoot</tag>
       
       <tag>项目部署</tag>
       
